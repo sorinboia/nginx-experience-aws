@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: arcadia
+  annotations:
+    nginx.com/health-checks: "true"    	
+    ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.org/server-snippets: |
+      proxy_ignore_headers X-Accel-Expires Expires Cache-Control;
+      proxy_cache_valid any 30s;
+    nginx.org/location-snippets: |      
+      proxy_cache my_cache;
+      add_header X-Cache-Status $upstream_cache_status;
+
+spec:
+  tls:
+  - hosts:
+    - a8002804ddc6f4cc19938b35d423384d-412080330.eu-central-1.elb.amazonaws.com
+    secretName: arcadia-tls
+  rules:
+  - host: a8002804ddc6f4cc19938b35d423384d-412080330.eu-central-1.elb.amazonaws.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: arcadia-main
+          servicePort: 80
+      - path: /api/
+        backend:
+          serviceName: arcadia-app2
+          servicePort: 80
+      - path: /app3/
+        backend:
+          serviceName: arcadia-app3
+          servicePort: 80
