@@ -40,12 +40,13 @@ resource "aws_eks_node_group" "demo" {
 
   remote_access {
     ec2_ssh_key = "sorin_key"
+    source_security_group_ids = [aws_security_group.sgweb.id]
   }
 
 
   scaling_config {
     desired_size = 2
-    max_size     = 2
+    max_size     = 4
     min_size     = 2
   }
 

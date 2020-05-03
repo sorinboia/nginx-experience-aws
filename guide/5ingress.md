@@ -1,4 +1,4 @@
-## Increase availability, security and application performance with Kubernetes Nginx Ingress
+## Increase availability, security and application performance with Kubernetes Nginx Ingress - part 1
 
 Now we are getting to the interesting part.  
 Previously we have deployed the application but was able to expose only the Main service.  
@@ -192,4 +192,6 @@ spec:
 We have two simple indicators to check that all is working:  
 - First if we open the browser developer tools we can see a new http header in the response called "X-Cache-Status".  
 If the response was taken from the cache it will have a value of "HIT" otherwise if it was server by the server the value will be "MISS"
-- The second options is to look at the Nginx Dashboard -> Caches and observe the HIT ration and traffic served 
+- The second options is to look at the Nginx Dashboard -> Caches and observe the HIT ration and traffic served
+
+#### [Second part](5ingress1.md)  

@@ -12,7 +12,7 @@ The application is built with 4 different microservices that are deployed in the
 
 First lets start and clone the git repository that will help us during the workshop.
 
-> git clone https://blahblahblah.com
+> git clone https://github.com/sorinboia/nginx-experience-aws
 
 
 By the end of the workshop the "Arcadia Financial" will be fully deployed and protected as described in the bellow diagram.

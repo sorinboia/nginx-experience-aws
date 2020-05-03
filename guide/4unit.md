@@ -48,6 +48,9 @@ Lets check the application is up and running by browsing to the "EXTERNAL-IP" of
 In our example this will be acd118a007f3749709373e5fed7206c3-436092828.eu-central-1.elb.amazonaws.com .
 
 
+BLAH BLAH ABOUT UNIT
+
+
 
 
 
