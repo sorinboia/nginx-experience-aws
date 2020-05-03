@@ -9,7 +9,7 @@ We need to be able and understand the requests and send them to the relevant ser
 Nginx Kubernetes Ingress to save the day :).
 
  
-#####Let start by doing the Nginx deployment.
+##### Lets start by doing the Nginx deployment.
 We are going to use Nginx installation with manifests following the step by step instructions on the Nginx site.  
 [https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/](https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/)   
 
@@ -18,27 +18,64 @@ To be able and use the full Nginx capabilities we are going to use Nginx Plus.
 Nginx Plus requires you to build your own container prior to the deployment, we need to change the location the container image is pulled from.  
 Edit the file at "deployment/nginx-plus-ingress.yaml", instead of:
 <pre>
-- image: nginx-plus-ingress:1.6.3
+- image: nginx-plus-ingress:1.7.0
 </pre>
 
 It should look like this:
 <pre>
-- image: sorinboia/nginx-plus-ingress:edge
+- image: sorinboia/nginx-plus-ingress:1.7.0
 </pre>
+
+Additionally we want to allow access to the dashboard, please edit the args block to reflect the bellow ( we have added the following line - -nginx-status-allow-cidrs=0.0.0.0/0):
+<pre>
+        args:
+          - -nginx-plus
+          - -nginx-configmaps=$(POD_NAMESPACE)/nginx-config
+          - -default-server-tls-secret=$(POD_NAMESPACE)/default-server-secret
+          - -nginx-status-allow-cidrs=0.0.0.0/0
+</pre>
+
+
+
 Save the file and continue with the instructions in the Nginx installation guide. We are doing to deploy Nginx Ingress as a "Deployment" not a "DeamonSet".
+
+Next we need to run the following in order to expose the Nginx Dashboard.
+<pre>
+cat << EOF | kubectl apply -f -
+apiVersion: v1
+kind: Service
+metadata:
+  name: dashboard-nginx-ingress
+  namespace: nginx-ingress
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"    
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: nginx-ingress
+EOF
+</pre>
 
 At this stage basic install is finished and all is left is to check connectivity, get the public hostname of the exposed Nginx Ingress.
 
 <pre>
 Command:
-kubectl get svc nginx-ingress --namespace=nginx-ingress
+kubectl get svc --namespace=nginx-ingress
 
 Output:
-NAME            TYPE           CLUSTER-IP      EXTERNAL-IP                                                                 PORT(S)                      AGE  
-nginx-ingress   LoadBalancer   172.20.202.34   a8002804ddc6f4cc19938b35d423384d-412080330.eu-central-1.elb.amazonaws.com   80:32160/TCP,443:30997/TCP   10m
+NAME                      TYPE           CLUSTER-IP      EXTERNAL-IP                                                                 PORT(S)                      AGE
+dashboard-nginx-ingress   LoadBalancer   172.20.36.60    aeb592ad4011544219c0bc49581baa13-421891138.eu-central-1.elb.amazonaws.com   80:32044/TCP                 11m
+nginx-ingress             LoadBalancer   172.20.14.206   ab21b88fec1f445d98c79398abc2cd5d-961716132.eu-central-1.elb.amazonaws.com   80:30284/TCP,443:31110/TCP   5h35m
+
 </pre>
 
-Use the "EXTERNAL-IP" and check both http and https access. In both cases you should get a 404 Not Found error since the traffic is not routed.
+Use the "EXTERNAL-IP" of "nginx-ingress" and check both http and https access. In both cases you should get a 404 Not Found error since the traffic is not routed.  
+Verify that you have access to the dashboard the following way: http://aeb592ad4011544219c0bc49581baa13-421891138.eu-central-1.elb.amazonaws.com/dashboard.html
 
 ##### Now we can get to the interesting part
 First we are going to expose all the application services and route traffic based on the HTTP path.

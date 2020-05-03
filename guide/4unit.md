@@ -23,7 +23,7 @@ Output:
 
 Let check that all is deployed and working as expected:  
 Command:
-> kubectl get nodes
+> kubectl get pods
 
 Output:
 > NAME                              READY   STATUS    RESTARTS   AGE  
