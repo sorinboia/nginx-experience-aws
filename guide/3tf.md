@@ -2,7 +2,7 @@
 
 First we will start by using Terraform to deploy the initial infrastructure which includes the Amazon Elastic Kubernetes Service and the EC2 instance for the Nginx Controller.
 
-Go to the blahblah directory where we can find the terraform plan.
+Go to the "terraform" directory where we can find the terraform plan.
 
 <pre>
 Command:
@@ -41,8 +41,8 @@ kubectl get nodes
 
 Output:   
 NAME                                          STATUS   ROLES    AGE   VERSION  
-ip-10-0-2-32.eu-central-1.compute.internal    Ready    <none>   84s   v1.15.10-eks-bac369  
-ip-10-0-3-217.eu-central-1.compute.internal   Ready    <none>   88s   v1.15.10-eks-bac369  
+ip-10-0-2-32.eu-central-1.compute.internal    Ready     none    84s   v1.15.10-eks-bac369  
+ip-10-0-3-217.eu-central-1.compute.internal   Ready     none    88s   v1.15.10-eks-bac369  
 </pre>
 <pre>
 Command:
@@ -63,3 +63,5 @@ At the moment we have our setup deployed as it can be seen in the bellow diagram
 ![](images/3env.jpg)
 
 Next we will move on to deploying the application.
+
+#### [Next part](4unit.md)
