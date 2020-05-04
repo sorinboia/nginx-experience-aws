@@ -49,7 +49,7 @@ spec:
     spec:
       containers:
         - name: microgateway1
-          image: sorinboia/ngtest:slim
+          image: sorinboia/ngtest:3.4
           imagePullPolicy: Always
           env:
             - name: API_KEY
@@ -67,7 +67,25 @@ spec:
                 - 127.0.0.1:49151/api
             initialDelaySeconds: 5
             periodSeconds: 5
-        
+            
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: microgateway
+spec:
+  selector:
+    app: microgateway
+  ports:
+    - port: 80
+      targetPort: 80
+      name: http
+    - port: 443
+      targetPort: 443
+      name: https
+  externalTrafficPolicy: Local
+  type: LoadBalancer
 </pre>
 
 From now on we will only use the Controller GUI do to all of our configuration.  
@@ -116,11 +134,11 @@ The output will look like this:
 > Name: api.arcadia.sorinb.cloud   
 > Environment: prod  
 > Instance Refs: Select All  
-> Hostname: https://ae0aa9bf7704745fbb2a47da2c3a2039-258004477.eu-central-1.elb.amazonaws.com  
+> Hostname: https://<EXTERNAL-IP OF THE "microgateway" SERVICE>  
 > Cert Reference: sorin-wild
 
 ##### "N" -> "Services" -> "Apps" -> "Create"
-> Name: arcadia-app   
+> Name: arcadia-api   
 > Environment: prod  
 
 
@@ -143,14 +161,19 @@ Go to "N" -> "APIs" -> "API Definitions". You can see listed the "Arcadia API" d
  kubectl get svc
  
  Output:
- NAME           TYPE           CLUSTER-IP      EXTERNAL-IP                                                                 PORT(S)                      AGE
- arcadia-app2   ClusterIP      172.20.23.53    none                                                                        80/TCP                       162m
- arcadia-app3   ClusterIP      172.20.130.68   none                                                                        80/TCP                       162m
+ NAME              TYPE           CLUSTER-IP       EXTERNAL-IP                                                                 PORT(S)                      AGE
+ arcadia-app2      ClusterIP      172.20.103.189   none                                                                        80/TCP                       171m
+ arcadia-app3      ClusterIP      172.20.238.13    none                                                                        80/TCP                       171m
+ arcadia-backend   ClusterIP      172.20.228.83    none                                                                        80/TCP                       109m
+ arcadia-main      ClusterIP      172.20.166.2     none                                                                        80/TCP                       7s
+ backend           ClusterIP      172.20.44.133    none                                                                        80/TCP                       171m
+ kubernetes        ClusterIP      172.20.0.1       none                                                                        443/TCP                      8h
+ microgateway      LoadBalancer   172.20.81.110    a2fa7314165114fb9b16ebd92a890078-367878391.eu-central-1.elb.amazonaws.com   80:32293/TCP,443:32428/TCP   12m
  </pre>
 
-We are interested in "app2" and "app3" and their DNS names are "arcadia-app2" and "arcadia-app3".
+We are interested in "main" and "app2" and their DNS names are "arcadia-main" and "arcadia-app2".
 
-##### "N" -> "APIs" -> "Workload Groups" -> "Create"
+##### "N" -> "Services" -> "APIs" -> "Workload Groups" -> "Create"
 Create the configuration of each of the "Work loads"
 > Name: arcadia-app2  
 > Click Save  
@@ -159,8 +182,8 @@ Add workload
 > First input: arcadia-app2  
 > Port: 80  
 
-Repeat the steps above for "app3".  
-Return to "N" -> "APIs" -> "API Definitions" -> "Pen" Icon -> "Add a published API"
+Repeat the steps above for "arcadia-main".  
+Return to "N" -> "Services"-> "APIs" -> "API Definitions" -> "Pen" Icon -> "Add a published API"
 > Published API Name: arcadia-pub-api  
 > Environment: prod  
 > Application: arcadia-api  
@@ -168,12 +191,11 @@ Return to "N" -> "APIs" -> "API Definitions" -> "Pen" Icon -> "Add a published A
 > Save  
 > Add a route  
 > All URLs that start with /api assign work load "arcadia-app2". 
-> All URLs that start with /app3 assign work load "arcadia-app3".  
+> All URLs that start with /trading assign work load "arcadia-main".  
 > After adding each route click Save.
 > When done click "Publish"
 
 Once the public API has been published we need to take the same procedure and do the same for the internal APIs that are accessing the Arcadia Backend service.  
-If you login into the main application at the moment you can observe that the page is broken, this is because we pointed the backend service to go through our microgateway but haven't configured it yet, let's do that now.
 
 ##### "N" -> "Services" -> "Environments" -> "Create"  
 > Name: internal
@@ -193,15 +215,32 @@ If you login into the main application at the moment you can observe that the pa
 We could continue and import the OpenApi spec of the backend service as before but now we want to present the load balancing configuration when developers don't have the spec at hand.
 
 ##### "N" -> "Services" -> "Apps" -> "arcadia-backend" -> "Create Component"  
-> Name: backend-component
-> Error Log: V 
-> Access Log: V  
+> Name: backend-component  
+> Error Log: V   
+> Access Log: V    
 > Gateway Refs: backend  
 > URIs: /  
 > Workload Group Name: arcadia-backend    
 > URI: http://arcadia-backend
 
-Now we are going to test our configuration. If you go back to the main app you will able to see that the problems are fixed and you can see the "Transfer History".
+Now we just need to tell kubernetes to point to the microgateway instead of directly to the pods.
+<pre>
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  labels:
+    app: microgateway
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: microgateway
+</pre>
+
+
 Next we are going to test an API call to our published APIs.  
 Run the Postman request "Transfer Money - No Auth". You should receive a success message and if you go to the main application and refresh the page you will be able to see the trasaction we just did in the "Transfer History" location.
 
@@ -218,12 +257,13 @@ All looks good but we are not done, we should add some security to our API and e
 
 Copy the key and update the postman environment variable "api_key"
 
-###### "N" -> "APIs" -> "API Definitions" -> "Pen" icon next to "arcadia-pub-api"
+###### "N" -> "Services" -> "APIs" -> "API Definitions" -> "Pen" icon next to "arcadia-pub-api"
 > Add a policy  
 > Policy Type: Authentication  
 > Identity Provider: api-protect
 > Credential Location apikey: HTTP request header  
-> Header name: apikey  
+> Header name: apikey    
+> Save
 > Publish
 
 Now in order to check that all is working as expected we will do the following:

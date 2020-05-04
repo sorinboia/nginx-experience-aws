@@ -7,7 +7,6 @@ spec:
   selector:
     matchLabels:
       app: arcadia-main
-
   template:
     metadata:
       labels:
@@ -15,9 +14,10 @@ spec:
     spec:
       containers:
         - name: arcadia-main
-          image: sorinboia/arcadia-main:latest
+          image: sorinboia/arcadia-main:unit
+          imagePullPolicy: Always
           ports:
-          - containerPort: 80
+          - containerPort: 8080
 
 ---
 
@@ -38,9 +38,10 @@ spec:
     spec:
       containers:
         - name: arcadia-backend
-          image: sorinboia/arcadia-backend:latest
+          image: sorinboia/arcadia-backend:unit
+          imagePullPolicy: Always
           ports:
-          - containerPort: 80
+          - containerPort: 8080
 
 ---
 
@@ -61,9 +62,10 @@ spec:
     spec:
       containers:
         - name: arcadia-app2
-          image: sorinboia/arcadia-app2:latest
+          image: sorinboia/arcadia-app2:unit
+          imagePullPolicy: Always
           ports:
-          - containerPort: 80
+          - containerPort: 8080
 
 ---
 
@@ -84,9 +86,10 @@ spec:
     spec:
       containers:
         - name: arcadia-app3
-          image: sorinboia/arcadia-app3:latest
+          image: sorinboia/arcadia-app3:unit
+          imagePullPolicy: Always
           ports:
-          - containerPort: 80
+          - containerPort: 8080
 
 ---
 
@@ -95,10 +98,9 @@ kind: Service
 metadata:
   name: arcadia-main  
 spec:
-  type: LoadBalancer
   ports:
   - port: 80
-    targetPort: 80
+    targetPort: 8080
     protocol: TCP
     name: http
   selector:
@@ -115,7 +117,7 @@ metadata:
 spec:
   ports:
   - port: 80
-    targetPort: 80
+    targetPort: 8080
     protocol: TCP
   selector:
     app: arcadia-backend
@@ -131,7 +133,7 @@ metadata:
 spec:
   ports:
   - port: 80
-    targetPort: 80
+    targetPort: 8080
     protocol: TCP
   selector:
     app: arcadia-app2
@@ -147,11 +149,7 @@ metadata:
 spec:
   ports:
   - port: 80
-    targetPort: 80
+    targetPort: 8080
     protocol: TCP
   selector:
     app: arcadia-app3
-
----
-
-

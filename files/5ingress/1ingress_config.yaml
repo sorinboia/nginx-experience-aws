@@ -5,20 +5,25 @@ metadata:
   annotations:
     nginx.com/health-checks: "true"    	
     ingress.kubernetes.io/ssl-redirect: "true"
+
+    nginx.com/sticky-cookie-services: "serviceName=arcadia-main srv_id expires=1h path=/"
+
     nginx.org/server-snippets: |
       proxy_ignore_headers X-Accel-Expires Expires Cache-Control;
       proxy_cache_valid any 30s;
+
     nginx.org/location-snippets: |      
       proxy_cache my_cache;
       add_header X-Cache-Status $upstream_cache_status;
+      opentracing_propagate_context;
 
 spec:
   tls:
   - hosts:
-    - a8002804ddc6f4cc19938b35d423384d-412080330.eu-central-1.elb.amazonaws.com
+    - aa6fc0963b1d34ba2b37b91241738f39-1193087591.eu-central-1.elb.amazonaws.com
     secretName: arcadia-tls
   rules:
-  - host: a8002804ddc6f4cc19938b35d423384d-412080330.eu-central-1.elb.amazonaws.com
+  - host: aa6fc0963b1d34ba2b37b91241738f39-1193087591.eu-central-1.elb.amazonaws.com
     http:
       paths:
       - path: /

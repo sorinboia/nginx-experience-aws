@@ -89,7 +89,7 @@ metadata:
   name: arcadia  
 spec:
   rules:
-  - host: a8002804ddc6f4cc19938b35d423384d-412080330.eu-central-1.elb.amazonaws.com
+  - host: MUST BE REPLACED WITH "EXTERNAL-IP" OF THE "nginx-ingress" SERVICE
     http:
       paths:
       - path: /
@@ -144,14 +144,14 @@ metadata:
   name: arcadia
   annotations:
     nginx.com/health-checks: "true"
-	ingress.kubernetes.io/ssl-redirect: "true"
+    ingress.kubernetes.io/ssl-redirect: "true"
 spec:
   tls:
   - hosts:
-    - a8002804ddc6f4cc19938b35d423384d-412080330.eu-central-1.elb.amazonaws.com
+    - MUST BE REPLACED WITH "EXTERNAL-IP" OF THE "nginx-ingress" SERVICE
     secretName: arcadia-tls
   rules:
-  - host: a8002804ddc6f4cc19938b35d423384d-412080330.eu-central-1.elb.amazonaws.com
+  - host: MUST BE REPLACED WITH "EXTERNAL-IP" OF THE "nginx-ingress" SERVICE
     http:
       paths:
       - path: /
@@ -194,7 +194,7 @@ kind: Ingress
 metadata:
   name: arcadia
   annotations:
-    nginx.com/health-checks: "true"    	
+    nginx.com/health-checks: "true"
     ingress.kubernetes.io/ssl-redirect: "true"
     nginx.org/server-snippets: |
       proxy_ignore_headers X-Accel-Expires Expires Cache-Control;
@@ -206,10 +206,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - a8002804ddc6f4cc19938b35d423384d-412080330.eu-central-1.elb.amazonaws.com
+    - MUST BE REPLACED WITH "EXTERNAL-IP" OF THE "nginx-ingress" SERVICE
     secretName: arcadia-tls
   rules:
-  - host: a8002804ddc6f4cc19938b35d423384d-412080330.eu-central-1.elb.amazonaws.com
+  - host: MUST BE REPLACED WITH "EXTERNAL-IP" OF THE "nginx-ingress" SERVICE
     http:
       paths:
       - path: /

@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: arcadia-main
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: arcadia-main
@@ -15,12 +15,12 @@ spec:
     spec:
       containers:
         - name: arcadia-main
-          image: sorinboia/arcadia-main:latest
+          image: sorinboia/arcadia-main:unit
           ports:
-          - containerPort: 80
+          - containerPort: 8080
           readinessProbe:
             httpGet:
-              port: 80
+              port: 8080
               path: /
               httpHeaders:
               - name: Host
@@ -48,13 +48,13 @@ spec:
     spec:
       containers:
         - name: arcadia-app2
-          image: sorinboia/arcadia-app2:latest
+          image: sorinboia/arcadia-app2:unit
           ports:
-          - containerPort: 80
+          - containerPort: 8080
           readinessProbe:
             httpGet:
-              port: 80
-              path: /api/
+              port: 8080
+              path: /
               httpHeaders:
               - name: Host
                 value: "arcadia-app2"
@@ -81,13 +81,13 @@ spec:
     spec:
       containers:
         - name: arcadia-app3
-          image: sorinboia/arcadia-app3:latest
+          image: sorinboia/arcadia-app3:unit
           ports:
-          - containerPort: 80
+          - containerPort: 8080
           readinessProbe:
             httpGet:
-              port: 80
-              path: /app3/
+              port: 8080
+              path: /
               httpHeaders:
               - name: Host
                 value: "arcadia-app3"
@@ -95,3 +95,18 @@ spec:
             successThreshold: 2
             failureThreshold: 3          
 
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: arcadia-backend
+  labels:
+    app: arcadia-backend
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: arcadia-backend

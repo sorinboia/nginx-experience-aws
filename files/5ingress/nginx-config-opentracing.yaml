@@ -1,0 +1,27 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: nginx-config
+  namespace: nginx-ingress
+data:
+  opentracing: "True"
+  opentracing-tracer: "/usr/local/lib/libjaegertracing_plugin.so"
+  opentracing-tracer-config: |
+    {
+      "service_name": "nginx-ingress",
+      "sampler": {
+        "type": "const",
+        "param": 1
+      },
+      "reporter": {
+        "localAgentHostPort": "jaeger-agent.default.svc.cluster.local:6831"
+      }
+    }
+  proxy-protocol: "True"
+  real-ip-header: "proxy_protocol"
+  set-real-ip-from: "0.0.0.0/0"
+  http-snippets  : |
+    proxy_cache_path /var/tmp/a levels=1:2 keys_zone=my_cache:10m max_size=100m inactive=60m use_temp_path=off;
+    log_format logstash '$remote_addr - $remote_user [$time_local] "$host" "$request" $status $body_bytes_sent "$http_referer" "$http_user_agent"';
+    access_log syslog:server=elk-web:5140,tag=nginx_access logstash;
+    error_log syslog:server=elk-web:5140,tag=nginx_error notice;
