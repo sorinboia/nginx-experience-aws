@@ -40,7 +40,7 @@ Additionally we want to allow access to the dashboard, please edit the args bloc
 
 Save the file and continue with the instructions in the Nginx installation guide. We are doing to deploy Nginx Ingress as a "Deployment" not a "DeamonSet".
 
-Next we need to run the following in order to expose the Nginx Dashboard.
+Next we need to run the following in order to expose the Nginx Dashboard ( copy and paste in the command line the bellow ).
 <pre>
 cat << EOF | kubectl apply -f -
 apiVersion: v1
