@@ -4,10 +4,10 @@ For our final part of the lab we will implement a per-pod Web Application Firewa
 In our scenario since we decided our Nginx Waf to be enabled on a per pod basis we are able to protect all of the traffic coming into the pod regardless of where is it originated from ( external or internal to the Kubernetes cluster).  
 We are able to bring security closer to the application and the development cycle and integrated into CI/CD pipelines. This will allow the almost remove false positives since it becomes a part of the application and is always tested as such.  
 
-First we will start by applying the Nginx Waf config which can be found in the "waf-config.yaml".  
+First we will start by applying the Nginx Waf config which can be found in the "files/7waf/waf-config.yaml".  
 <pre>
 Command:
-kubectl apply -f waf-config.yaml
+kubectl apply -f files/7waf/waf-config.yaml
 </pre>
 
 The Waf policy is json based and from the example bellow you can observe how all the configuration can be changed per application needs.
@@ -97,7 +97,7 @@ The Waf policy is json based and from the example bellow you can observe how all
 First thing we will do is prepare ELK in order for us to be able to visualize and analyze all of the traffic going through the Nginx Waf.
 <pre>
 Command:
-kubectl apply -f elk.yaml
+kubectl apply -f files/7waf/elk.yaml
 </pre>
 
 In order to connect to our ELK instance we will need to find the public address of this service.
@@ -114,10 +114,10 @@ Wait a minute or two and verify that ELK is up and running by browsing to: http:
 Next we need to change our deployment configuration so it includes the Nginx Waf.
 <pre>
 Commands:
-kubectl apply -f arcadia-main.yaml
-kubectl apply -f arcadia-app2.yaml
-kubectl apply -f arcadia-app3.yaml
-kubectl apply -f arcadia-backend.yaml
+kubectl apply -f files/7waf/arcadia-main.yaml
+kubectl apply -f files/7waf/arcadia-app2.yaml
+kubectl apply -f files/7waf/arcadia-app3.yaml
+kubectl apply -f files/7waf/arcadia-backend.yaml
 </pre>
 
 Right now all of our services are monitored and protected.  
