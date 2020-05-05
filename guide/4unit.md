@@ -44,7 +44,7 @@ Output:
 NAME           TYPE           CLUSTER-IP       EXTERNAL-IP                                                                 PORT(S)        AGE    SELECTOR  
 arcadia-app2   ClusterIP      172.20.215.142    none                                                                       80/TCP         23m    app=arcadia-app2  
 arcadia-app3   ClusterIP      172.20.97.115     none                                                                       80/TCP         23m    app=arcadia-app3  
-arcadia-main   LoadBalancer   172.20.102.115   acd118a007f3749709373e5fed7206c3-436092828.eu-central-1.elb.amazonaws.com   80:32065/TCP   23m    app=arcadia-main  
+arcadia-main   ClusterIP      172.20.102.115                                                                               80:32065/TCP   23m    app=arcadia-main  
 backend        ClusterIP      172.20.84.9       none                                                                       80/TCP         5s     app=arcadia-backend  
 kubernetes     ClusterIP      172.20.0.1        none                                                                       443/TCP        108m    none   
 </pre>
