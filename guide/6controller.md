@@ -15,19 +15,12 @@ Output:
     public_ip                    = "18.184.134.91"
 </pre>
 
-Next we need to perform the installation, to make things easier we created a script you just need to run it in the following way:
-<pre>
-Commands:
-cd controller
-npm install
-node index --host=18.184.134.91
-</pre>
 
-The installation will take around 5 minutes. When done https browse to the IP address of the Controller.
+Https browse to the IP address of the Controller.
 > username: s@s.com  
 > password: sorin2019
 
-Next step is to get the API key to connect the microgate way so it is managed by the controller.
+Next step is to get the API key to connect the microgateway so it is managed by the controller.
 One you login the first thing you will see is the API key, save it for later.
 
 Now lets deploy the microgateway with the following configuration and don't forget to replace the IP address and API key of the controller:
