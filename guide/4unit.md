@@ -10,7 +10,7 @@ As stated before these are the 4 microservices which we will deploy.
 Let deploy the app
 <pre>
 Command:
-kubectl apply -f files/3ingress/1arcadia.yaml
+kubectl apply -f files/5ingress/1arcadia.yaml
 
 Output:
 deployment.apps/arcadia-main created  
