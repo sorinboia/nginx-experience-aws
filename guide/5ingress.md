@@ -11,7 +11,7 @@ Nginx Kubernetes Ingress to save the day :).
  
 ##### Lets start by doing the Nginx deployment.
 We are going to use Nginx installation with manifests following the step by step instructions on the Nginx site.
-Follow the instructions (we have already prepared the Nginx Plus image so there is not need to do that)and stop after finishing the second stage.  
+Follow the instructions (we have already prepared the Nginx Plus image so there is not need to do that)and stop after finishing the second stage (Create Common Resources).  
 [https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/](https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/)   
 
 
@@ -38,7 +38,8 @@ Additionally we want to allow access to the dashboard, please edit the args bloc
 
 
 
-Save the file and continue with the instructions in the Nginx installation guide. We are doing to deploy Nginx Ingress as a "Deployment" not a "DeamonSet".
+Save the file and continue with the instructions in the Nginx installation guide. 
+We are doing to deploy Nginx Ingress as a "Deployment" not a "DeamonSet" and the Nginx plus configuration.
 
 Next we need to run the following in order to expose the Nginx Dashboard ( copy and paste in the command line the bellow ).
 <pre>
@@ -62,26 +63,12 @@ spec:
 EOF
 </pre>
 
-At this stage basic install is finished and all is left is to check connectivity, get the public hostname of the exposed Nginx Ingress.
 
-<pre>
-Command:
-kubectl get svc --namespace=nginx-ingress
-
-Output:
-NAME                      TYPE           CLUSTER-IP      EXTERNAL-IP                                                                 PORT(S)                      AGE
-dashboard-nginx-ingress   LoadBalancer   172.20.36.60    aeb592ad4011544219c0bc49581baa13-421891138.eu-central-1.elb.amazonaws.com   80:32044/TCP                 11m
-nginx-ingress             LoadBalancer   172.20.14.206   ab21b88fec1f445d98c79398abc2cd5d-961716132.eu-central-1.elb.amazonaws.com   80:30284/TCP,443:31110/TCP   5h35m
-
-</pre>
-
-Use the "EXTERNAL-IP" of "nginx-ingress" and check both http and https access. In both cases you should get a 404 Not Found error since the traffic is not routed.  
-Verify that you have access to the dashboard the following way: http://aeb592ad4011544219c0bc49581baa13-421891138.eu-central-1.elb.amazonaws.com/dashboard.html
 
 ##### Now we can get to the interesting part
 First we are going to expose all the application services and route traffic based on the HTTP path.
 We will start with a basic configuration.
-First create a new file, for example arcadia-vs.yaml and add the bellow configuration:
+First create a new file, for example arcadia-vs.yaml, add the bellow configuration and apply it:
 
 <pre>
 apiVersion: extensions/v1beta1
@@ -107,6 +94,22 @@ spec:
           servicePort: 80
 </pre>
 
+<pre>
+Command:
+kubectl get svc --namespace=nginx-ingress
+
+Output:
+NAME                      TYPE           CLUSTER-IP      EXTERNAL-IP                                                                 PORT(S)                      AGE
+dashboard-nginx-ingress   LoadBalancer   172.20.36.60    aeb592ad4011544219c0bc49581baa13-421891138.eu-central-1.elb.amazonaws.com   80:32044/TCP                 11m
+nginx-ingress             LoadBalancer   172.20.14.206   ab21b88fec1f445d98c79398abc2cd5d-961716132.eu-central-1.elb.amazonaws.com   80:30284/TCP,443:31110/TCP   5h35m
+
+</pre>
+
+At this stage basic install is finished and all is left is to check connectivity, get the public hostname of the exposed Nginx Ingress.
+
+  
+Verify that you have access to the dashboard the following way: http://<dashboard-nginx-ingress EXTERNAL-IP>>/dashboard.html
+
 Now you can browse to the application and verify that it is working.
 At the moment we still have two key features missing:
 1. We are serving only http, no https. We want our site to be fully secured therefor all communication need to be encrypted.
@@ -125,7 +128,7 @@ In our next step we will finish this part of the configuration, we will implemen
 - Enable health checks
 - Enable https for the application and redirect http requests to https
 
-Change the files/5ingress/ingress-arcadia.yaml to reflect the bellow and apply the configuration.
+Create ingress-arcadia.yaml to reflect the bellow and apply the configuration.
 <pre>
 apiVersion: v1
 kind: Secret
