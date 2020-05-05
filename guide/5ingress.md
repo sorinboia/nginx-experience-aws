@@ -108,7 +108,7 @@ nginx-ingress             LoadBalancer   172.20.14.206   ab21b88fec1f445d98c7939
 At this stage basic install is finished and all is left is to check connectivity, get the public hostname of the exposed Nginx Ingress.
 
   
-Verify that you have access to the dashboard the following way: http://<dashboard-nginx-ingress EXTERNAL-IP>>/dashboard.html
+Verify that you have access to the dashboard the following way: http://dashboard-nginx-ingress EXTERNAL-IP/dashboard.html
 
 Now you can browse to the application and verify that it is working.
 At the moment we still have two key features missing:
