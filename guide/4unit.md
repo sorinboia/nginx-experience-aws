@@ -49,10 +49,6 @@ backend        ClusterIP      172.20.84.9       none                            
 kubernetes     ClusterIP      172.20.0.1        none                                                                       443/TCP        108m    none   
 </pre>
 
-From the output above you can see that "arcadia-main" is the only service that we have exposed to the outside world.
-Lets check the application is up and running by browsing to the "EXTERNAL-IP" of the Main service.  
-In our example this will be acd118a007f3749709373e5fed7206c3-436092828.eu-central-1.elb.amazonaws.com.  
-
 All of our pods are created based on the Nginx Unit application server.
 NGINX Unit is a dynamic application server, capable of running beside NGINX Plus and NGINX Open Source or standalone. Unit supports a RESTful JSON API, deploys configuration changes without service disruptions, and runs apps built with multiple languages and frameworks. Designed from scratch around the needs of your distributed applications, it lays the foundation for your service mesh.
 
