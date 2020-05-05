@@ -76,6 +76,6 @@ Use NGINX Unit as the foundation for your service mesh:
 - Offload network configuration from application code to NGINX Unit
 - Built-in SSL/TLS support
 
-More informatio can be found [here](https://www.nginx.com/products/nginx-unit/#resources).  
+More information can be found [here](https://www.nginx.com/products/nginx-unit/#resources).  
 ![](images/4env.jpg)
 #### [Next part](5ingress.md)
