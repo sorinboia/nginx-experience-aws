@@ -112,11 +112,11 @@ At the moment we still have two key features missing:
 2. We are not actively monitoring the health of the pods through the data path
 
 
-First take a look at the 2arcadia.yaml file. It increases the number of pod to 2 for each service and also defines how the http health checks will looks like.
+First take a look at the files/5ingress/2arcadia.yaml file. It increases the number of pod to 2 for each service and also defines how the http health checks will looks like.
 Lets apply this new configuration.
 <pre>
 Command:
-kubectl apply -f 2arcadia.yaml
+kubectl apply -f files/5ingress/2arcadia.yaml
 </pre>
 
 If you look at the Nginx dashboard you can see that right now each upstream has 2 members but no health checks are being done.  
@@ -124,7 +124,7 @@ In our next step we will finish this part of the configuration, we will implemen
 - Enable health checks
 - Enable https for the application and redirect http requests to https
 
-Change the ingress-arcadia.yaml to reflect the bellow and apply the configuration.
+Change the files/5ingress/ingress-arcadia.yaml to reflect the bellow and apply the configuration.
 <pre>
 apiVersion: v1
 kind: Secret
@@ -172,7 +172,7 @@ Now when you try to browse to the Arcadia website with http you will be automati
 Second if you look at the Nginx dashboard you can observe that Nginx has started monitoring the pods.
 
 Our next step in the application journey will be to speed up application performance and enable caching.  
-First lets make sure that nginx-config.yaml reflects the bellow configuration. We are telling Nginx to create a caching entity that will be used by our Ingress.
+Create a new file nginx-config.yaml that reflects the bellow configuration and apply it. We are telling Nginx to create a caching entity that will be used by our Ingress.
 <pre>
 kind: ConfigMap
 apiVersion: v1

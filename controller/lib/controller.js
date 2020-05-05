@@ -7,8 +7,8 @@ const controllerApi = require('./controller_api');
 const cUser = 's@s.com';
 const cPassword = 'sorin2019';
 
-//const controllerFile = '6controller-installer-3.3.0.tar.gz';
-const controllerFile = 'offline-6controller-installer-1701324.tar.gz';
+//const controllerFile = 'controller-installer-3.3.0.tar.gz';
+const controllerFile = 'offline-controller-installer-1701324.tar.gz';
 
 
 
@@ -37,7 +37,7 @@ class controller extends Ubuntu_server {
 
         this.controllerShellCommands =[
             `tar zxvf ${controllerFile}\n`,
-            'cd 6controller-installer\n',
+            'cd controller-installer\n',
             'host_ip=$(ip addr show eth0 | grep "inet\\b" | awk \'{print $2}\' | cut -d/ -f1)\n',
             `./install.sh -n --accept-license --smtp-host $host_ip --smtp-port 25 --smtp-authentication false --smtp-use-tls false --noreply-address no-reply@sorin.nginx --fqdn ${this.host} --organization-name nginx1 --admin-firstname sorin --admin-lastname sorin --admin-email ${cUser} --admin-password ${cPassword} --self-signed-cert --auto-install-docker --tsdb-volume-type local\n`
         ];
@@ -46,10 +46,10 @@ class controller extends Ubuntu_server {
     async deploy()  {
 
         this.logger.info('delpoyment started');
-        //await this.ssh.putDirectory('components/6controller/uploads_controller', 'uploads_controller');
+        //await this.ssh.putDirectory('components/controller/uploads_controller', 'uploads_controller');
         // Above original bellow will need to be changed
 
-        await this.ssh.putDirectory('C:\\Users\\boiangiu\\Desktop\\Nginx Demo\\nodejs\\components\\6controller\\uploads_controller', 'uploads_controller');
+        await this.ssh.putDirectory('C:\\Users\\boiangiu\\Desktop\\Nginx Demo\\nodejs\\components\\controller\\uploads_controller', 'uploads_controller');
 
         for (let i in this.controllerCommands) {
             let result = await this.ssh.execCommand(this.controllerCommands[i]);
@@ -85,7 +85,7 @@ class controller extends Ubuntu_server {
         await this.cApi.login();
 
         // This will need to be changed
-        await this.cApi.upload_license('C:\\Users\\boiangiu\\Desktop\\Nginx Demo\\nodejs\\components\\6controller\\uploads_controller\\controller_license.txt');
+        await this.cApi.upload_license('C:\\Users\\boiangiu\\Desktop\\Nginx Demo\\nodejs\\components\\controller\\uploads_controller\\controller_license.txt');
 
 
     }

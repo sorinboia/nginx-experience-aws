@@ -6,7 +6,7 @@ Go to the "terraform" directory where we can find the terraform plan.
 
 <pre>
 Command:
-cd asd/asd/
+cd terraform
 </pre>
 
 Run the following commands, tf plan will show us what it is going to be deployed in AWS by Terraform:
