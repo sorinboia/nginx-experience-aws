@@ -10,10 +10,11 @@ Nginx Kubernetes Ingress to save the day :).
 
  
 ##### Lets start by doing the Nginx deployment.
-We are going to use Nginx installation with manifests following the step by step instructions on the Nginx site.  
+We are going to use Nginx installation with manifests following the step by step instructions on the Nginx site.
+Follow the instructions and stop after finishing the second stage.  
 [https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/](https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/)   
 
-Follow the instructions and stop after finishing the second stage.
+
 To be able and use the full Nginx capabilities we are going to use Nginx Plus.  
 Nginx Plus requires you to build your own container prior to the deployment, we need to change the location the container image is pulled from.  
 Edit the file at "deployment/nginx-plus-ingress.yaml", instead of:
