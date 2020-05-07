@@ -39,7 +39,7 @@ resource "aws_eks_node_group" "demo" {
   subnet_ids      = [aws_subnet.public-subnet.id,aws_subnet.private-subnet.id]
 
   remote_access {
-    ec2_ssh_key = "sorin_key"
+    ec2_ssh_key = var.key_name
     source_security_group_ids = [aws_security_group.sgweb.id]
   }
 
