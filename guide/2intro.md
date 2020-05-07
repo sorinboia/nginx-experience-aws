@@ -87,9 +87,7 @@ Click 'Next' accepting all the defaults, but make sure the following is selected
 10. Open the [Cloud9 console](https://eu-central-1.console.aws.amazon.com/cloud9/home), and click on `Open IDE`.
 This will open a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. It includes a code editor, debugger, and a terminal. We will be using it for the rest of the workshop.
 
-{{% notice warning %}} The Cloud9 workspace should be built by an IAM user with Administrator privileges, not the root account user. Please ensure you are logged in as an IAM user, not the root account user. {{% /notice %}}
-
-{{% notice tip %}} Ad blockers, javascript disablers, and tracking blockers should be disabled for the cloud9 domain, or connecting to the workspace might be impacted. Cloud9 requires third-party-cookies. You can whitelist the specific domains. {{% /notice %}}
+> :warning: Ad blockers, javascript disablers, and tracking blockers should be disabled for the cloud9 domain, or connecting to the workspace might be impacted. Cloud9 requires third-party-cookies. You can whitelist the specific domains.
 
 
 Now, lets start and clone the git repository that will help us during the workshop.
