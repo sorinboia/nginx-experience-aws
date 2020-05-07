@@ -135,6 +135,7 @@ kubectl in path
 jq in path
 envsubst in path
 aws in path
+aws-iam-authenticator in path
 terraform in path
 ```
 
