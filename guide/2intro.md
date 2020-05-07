@@ -22,7 +22,7 @@ This workshop creates an AWS account and a Cloud9 environment. You will need the
 
 Connect to the portal by clicking the button or browsing to [https://dashboard.eventengine.run/](https://dashboard.eventengine.run/). The following screen shows up.
 
-![Event Engine](/images/event-engine-initial-screen.png)
+![Event Engine](images/event-engine-initial-screen.png)
 
 Enter the provided hash in the text box. The button on the bottom right corner changes to **Accept Terms & Login**. Click on that button to continue.
 
