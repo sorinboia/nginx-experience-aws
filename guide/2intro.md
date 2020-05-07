@@ -98,7 +98,7 @@ This will open a cloud-based integrated development environment (IDE) that lets 
 
 &nbsp;&nbsp;
 
-![c9disableiam](/images/c9disableiam.png)
+![c9disableiam](images/c9disableiam.png)
 
 To ensure temporary credentials aren't already in place we will also remove
 any existing credentials file:
