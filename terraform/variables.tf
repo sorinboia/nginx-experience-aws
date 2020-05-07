@@ -33,3 +33,8 @@ variable "cluster-name" {
   default = "terraform-eks-demo"
   type    = string
 }
+
+variable "key_name" {
+  default = "ee-default-keypair"
+  type    = string
+}
