@@ -143,8 +143,9 @@ terraform in path
 15. Clone the Workshop Repo:
 ```
 git clone https://github.com/sorinboia/nginx-experience-aws
+cd nginx-experience-aws/
 ```
 
 &nbsp;&nbsp;
 
-#### [Next part](3tf.md)
+#### [Next, let's deploy the infrastructure using Terraform](3tf.md)
