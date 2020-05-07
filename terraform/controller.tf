@@ -67,7 +67,7 @@ resource "aws_instance" "controller" {
   subnet_id                   = aws_subnet.public-subnet.id
   security_groups             = [aws_security_group.sgweb.id]
   vpc_security_group_ids      = [aws_security_group.sgweb.id]
-  key_name                    = "sorin_key"
+  key_name                    = var.key_name
   tags = {
     Name = "controller"
   }
