@@ -62,10 +62,15 @@ Click 'Next' accepting all the defaults, but make sure the following is selected
 ## IAM Role
 
 7. Follow [this deep link to find your Cloud9 EC2 instance](https://console.aws.amazon.com/ec2/v2/home?#Instances:tag:Name=aws-cloud9-ideNGINX.*;sort=desc:launchTime)
+&nbsp;&nbsp;
 8. Select the instance, then choose **Actions / Instance Settings / Attach/Replace IAM Role**
+&nbsp;&nbsp;
 ![c9instancerole](images/c9instancerole.png)
+&nbsp;&nbsp;
 9. Choose **eksworkshop-admin** from the **IAM Role** drop down, and select **Apply**
+&nbsp;&nbsp;
 ![c9attachrole](images/c9attachrole.png)
+&nbsp;&nbsp;
 
 
 
