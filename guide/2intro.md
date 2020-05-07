@@ -34,7 +34,7 @@ Click on **AWS Console** on dashboard.
 ![Event Engine AWS Console](images/event-engine-aws-console.png)
   
   
-Take the defaults and click on **Open AWS Console**. This will open AWS Console in a new browser tab.
+Accept the defaults and make sure the region is `eu-central-1`. Click on **Open AWS Console**. This will open AWS Console in a new browser tab.
   
 ## CloudFormation
 Once you have completed the step above, please deploy the following template:
