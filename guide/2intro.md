@@ -105,7 +105,18 @@ any existing credentials file:
 ```sh
 rm -vf ${HOME}/.aws/credentials
 ```
+&nbsp;&nbsp;
 
+12. Validate the IAM role
+
+Use the [GetCallerIdentity](https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html) CLI command to validate that the Cloud9 IDE is using the correct IAM role.
+
+```
+aws sts get-caller-identity --query Arn | grep eksworkshop-admin -q && echo "IAM role valid" || echo "IAM role NOT valid"
+```
+
+
+If the IAM role is not valid, <span style="color: red;">**DO NOT PROCEED**</span>. Go back and confirm the steps on this page.
 
 
 
