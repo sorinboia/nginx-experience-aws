@@ -25,16 +25,22 @@ Connect to the portal by clicking the button or browsing to [https://dashboard.e
 ![Event Engine](images/event-engine-initial-screen.png)
 
 Enter the provided hash in the text box. The button on the bottom right corner changes to **Accept Terms & Login**. Click on that button to continue.
+  
 
 ![Event Engine Dashboard](images/event-engine-dashboard.png)
 
-Click on **AWS Console** on dashboard.
+Click on **AWS Console** on dashboard.  
 
 ![Event Engine AWS Console](images/event-engine-aws-console.png)
-
+  
+  
 Take the defaults and click on **Open AWS Console**. This will open AWS Console in a new browser tab.
 
-Once you have completed the step above, you can head straight to [**Create a Workspace**](/020_prerequisites/workspace/)
+Once you have completed the step above, please deploy the following template:
+
+[![Launch Stack](images/cfls.svg)](https://console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/new?stackName=NGINX-EKS&templateURL=https://artl-cfn-templates.s3.eu-central-1.amazonaws.com/nginx.yaml)
+
+&nbsp;&nbsp;
 
 
 
