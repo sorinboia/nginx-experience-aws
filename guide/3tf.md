@@ -12,13 +12,13 @@ cd terraform
 Run the following commands, tf plan will show us what it is going to be deployed in AWS by Terraform:
 <pre>
 Command:
-tf init
-tf plan
+terraform init
+terraform plan
 </pre>
 Now lets deploy the environment
 <pre>
 Command:
-tf apply --auto-approve
+terraform apply --auto-approve
 </pre>
 
 
