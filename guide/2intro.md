@@ -10,13 +10,18 @@ The application is built with 4 different microservices that are deployed in the
 - App3 - provides referral API based functionalities for both the Web app and third party consumer applications
 
 
-First lets start and clone the git repository that will help us during the workshop.
-
-> git clone https://github.com/sorinboia/nginx-experience-aws
-
 
 By the end of the workshop the "Arcadia Financial" will be fully deployed and protected as described in the bellow diagram.
 
 ![](images/2env.jpg)
+
+
+Please complete the following steps to access an AWS account and setup your workshop environment:
+
+
+Now, lets start and clone the git repository that will help us during the workshop.
+
+> git clone https://github.com/sorinboia/nginx-experience-aws
+
 
 #### [Next part](3tf.md)
