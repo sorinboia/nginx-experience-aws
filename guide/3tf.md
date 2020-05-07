@@ -63,6 +63,11 @@ At the moment we have our setup deployed as it can be seen in the bellow diagram
 
 ![](images/3env.jpg)
 
+Change the directory back to the original repo folder:
+```
+cd ..
+```
+
 Next we will move on to deploying the application.
 
 #### [Next part](4unit.md)
