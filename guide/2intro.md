@@ -16,7 +16,7 @@ By the end of the workshop the "Arcadia Financial" will be fully deployed and pr
 ![](images/2env.jpg)
 
 
-### Login to AWS Workshop Portal
+## AWS Workshop Portal
 
 This workshop creates an AWS account and a Cloud9 environment. You will need the **Participant Hash** provided upon entry, and your email address to track your unique session.
 
@@ -35,7 +35,8 @@ Click on **AWS Console** on dashboard.
   
   
 Take the defaults and click on **Open AWS Console**. This will open AWS Console in a new browser tab.
-
+  
+## CloudFormation
 Once you have completed the step above, please deploy the following template:
 
 [![Launch Stack](images/cfls.svg)](https://console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/new?stackName=NGINX-EKS&templateURL=https://artl-cfn-templates.s3.eu-central-1.amazonaws.com/nginx.yaml)
