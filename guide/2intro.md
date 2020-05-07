@@ -129,6 +129,15 @@ If the IAM role is not valid, <span style="color: red;">**DO NOT PROCEED**</span
 labs/eks/install.sh
 ```
 
+The output of the script should show:
+```
+kubectl in path
+jq in path
+envsubst in path
+aws in path
+terraform in path
+```
+
 &nbsp;&nbsp;
 
 15. Clone the Workshop Repo:
