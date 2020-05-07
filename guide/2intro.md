@@ -89,6 +89,7 @@ This will open a cloud-based integrated development environment (IDE) that lets 
 
 > :warning: Ad blockers, javascript disablers, and tracking blockers should be disabled for the cloud9 domain, or connecting to the workspace might be impacted. Cloud9 requires third-party-cookies. You can whitelist the specific domains.
 
+&nbsp;&nbsp;
 
 11. Disable temporary credentials:
 - In the Cloud9 IDE click the gear icon (in top right corner), or click to open a new tab and choose "Open Preferences"
@@ -100,11 +101,15 @@ This will open a cloud-based integrated development environment (IDE) that lets 
 
 ![c9disableiam](images/c9disableiam.png)
 
+&nbsp;&nbsp;
+
 12. To ensure temporary credentials aren't already in place we will also remove any existing credentials file:
   
 ```sh
 rm -vf ${HOME}/.aws/credentials
 ```
+
+&nbsp;&nbsp;
 
 13. Validate the IAM role:
   
@@ -116,15 +121,21 @@ aws sts get-caller-identity --query Arn | grep eksworkshop-admin -q && echo "IAM
 
 If the IAM role is not valid, <span style="color: red;">**DO NOT PROCEED**</span>. Go back and confirm the steps on this page.
 
+&nbsp;&nbsp;
+
 14. Run the following command to install all the software tools required to run the workshop:
 
 ```
 labs/eks/install.sh
 ```
 
+&nbsp;&nbsp;
+
 15. Clone the Workshop Repo:
 ```
 git clone https://github.com/sorinboia/nginx-experience-aws
 ```
+
+&nbsp;&nbsp;
 
 #### [Next part](3tf.md)
