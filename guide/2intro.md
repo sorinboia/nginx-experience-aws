@@ -90,6 +90,27 @@ This will open a cloud-based integrated development environment (IDE) that lets 
 > :warning: Ad blockers, javascript disablers, and tracking blockers should be disabled for the cloud9 domain, or connecting to the workspace might be impacted. Cloud9 requires third-party-cookies. You can whitelist the specific domains.
 
 
+11. Disable temporary credentials:
+- In the Cloud9 IDE click the gear icon (in top right corner), or click to open a new tab and choose "Open Preferences"
+- Select **AWS SETTINGS**
+- Turn off **AWS managed temporary credentials**
+- Close the Preferences tab
+
+&nbsp;&nbsp;
+
+![c9disableiam](/images/c9disableiam.png)
+
+To ensure temporary credentials aren't already in place we will also remove
+any existing credentials file:
+```sh
+rm -vf ${HOME}/.aws/credentials
+```
+
+
+
+
+
+
 Now, lets start and clone the git repository that will help us during the workshop.
 
 > git clone https://github.com/sorinboia/nginx-experience-aws
