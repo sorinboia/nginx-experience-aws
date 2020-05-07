@@ -9,7 +9,7 @@ Command:
 cd terraform
 </pre>
 
-Run the following commands, tf plan will show us what it is going to be deployed in AWS by Terraform:
+Run the following commands, terraform plan will show us what it is going to be deployed in AWS by Terraform:
 <pre>
 Command:
 terraform init
@@ -22,13 +22,14 @@ terraform apply --auto-approve
 </pre>
 
 
-It will take around 10 minutes for Terraform and Aws to finish the initial deployment.
-Once it is done there are a few things we need to check that all is working as expected and to the able to control the Kubernetes environment.
+It will take around 10 minutes for Terraform and AWS to finish the initial deployment.
+Once it is done, we need to verify the deployment is working as expected and we are able to control the Kubernetes environment.
 
 We need to save the remote access config for the Kubernetes cluster locally:  
 <pre>
 Command:
-tf output > /c/Users/boiangiu/.kube/config
+mkdir ~/.kube/ 
+terraform output > ~/.kube/config
 </pre>
 
 
