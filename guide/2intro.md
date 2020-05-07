@@ -26,11 +26,11 @@ Connect to the portal by clicking the button or browsing to [https://dashboard.e
 
 Enter the provided hash in the text box. The button on the bottom right corner changes to **Accept Terms & Login**. Click on that button to continue.
 
-![Event Engine Dashboard](/images/event-engine-dashboard.png)
+![Event Engine Dashboard](images/event-engine-dashboard.png)
 
 Click on **AWS Console** on dashboard.
 
-![Event Engine AWS Console](/images/event-engine-aws-console.png)
+![Event Engine AWS Console](images/event-engine-aws-console.png)
 
 Take the defaults and click on **Open AWS Console**. This will open AWS Console in a new browser tab.
 
