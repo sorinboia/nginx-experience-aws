@@ -100,15 +100,14 @@ This will open a cloud-based integrated development environment (IDE) that lets 
 
 ![c9disableiam](images/c9disableiam.png)
 
-To ensure temporary credentials aren't already in place we will also remove
-any existing credentials file:
+12. To ensure temporary credentials aren't already in place we will also remove any existing credentials file:
+  
 ```sh
 rm -vf ${HOME}/.aws/credentials
 ```
-&nbsp;&nbsp;
 
-12. Validate the IAM role
-
+13. Validate the IAM role:
+  
 Use the [GetCallerIdentity](https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html) CLI command to validate that the Cloud9 IDE is using the correct IAM role.
 
 ```
