@@ -114,16 +114,17 @@ Use the [GetCallerIdentity](https://docs.aws.amazon.com/cli/latest/reference/sts
 aws sts get-caller-identity --query Arn | grep eksworkshop-admin -q && echo "IAM role valid" || echo "IAM role NOT valid"
 ```
 
-
 If the IAM role is not valid, <span style="color: red;">**DO NOT PROCEED**</span>. Go back and confirm the steps on this page.
 
+14. Run the following command to install all the software tools required to run the workshop:
 
+```
+labs/eks/install.sh
+```
 
-
-
-Now, lets start and clone the git repository that will help us during the workshop.
-
-> git clone https://github.com/sorinboia/nginx-experience-aws
-
+15. Clone the Workshop Repo:
+```
+git clone https://github.com/sorinboia/nginx-experience-aws
+```
 
 #### [Next part](3tf.md)
