@@ -104,12 +104,13 @@ In order to connect to our ELK instance we will need to find the public address 
 <pre>
 Command:
 kubectl get svc elk-web
+
+Output:
 NAME      TYPE           CLUSTER-IP      EXTERNAL-IP                                                                  PORT(S)                                        AGE
 elk-web   LoadBalancer   172.20.179.34   a28bd2d8c94214ae0b512274daa06211-2103709514.eu-central-1.elb.amazonaws.com   5601:32471/TCP,9200:32589/TCP,5044:31876/TCP   16h
-Output:
 </pre>
 
-Wait a minute or two and verify that ELK is up and running by browsing to: http://<YOUR EXTERNAL IP>:5601 .
+Wait a minute or two and verify that ELK is up and running by browsing to: http://[YOUR EXTERNAL IP]:5601 .
 
 Next we need to change our deployment configuration so it includes the Nginx Waf.
 <pre>

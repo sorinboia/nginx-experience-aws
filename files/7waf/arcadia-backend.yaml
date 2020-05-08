@@ -27,9 +27,9 @@ spec:
             - name: https
               containerPort: 443
           volumeMounts:
-            - mountPath: /etc/nginx/7waf # mount nginx-conf volumn to /etc/nginx
+            - mountPath: /etc/nginx/waf # mount nginx-conf volumn to /etc/nginx
               readOnly: true
-              name: nginx-7waf
+              name: nginx-waf
             - mountPath: /etc/nginx/conf.d # mount nginx-conf volumn to /etc/nginx
               readOnly: true
               name: nginxwaf-config
@@ -48,9 +48,9 @@ spec:
         - name: nginxwaf-config
           configMap:
             name: nginxwaf-config
-        - name: nginx-7waf
+        - name: nginx-waf
           configMap:
-            name: nginx-7waf
+            name: nginx-waf
       imagePullSecrets:
         - name: regcred
 
