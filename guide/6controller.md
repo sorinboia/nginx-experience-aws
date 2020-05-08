@@ -252,7 +252,7 @@ Next we are going to test an API call to our published APIs.
 Run the bellow curl command.
 <pre>
 Command:
-curl -k --location --request POST 'https://<EXTERNAL-IP OF THE "microgateway" service>/api/rest/execute_money_transfer.php' --header 'Content-Type: application/json' --data-raw '{"amount":"77","account":"2075894","currency":"EUR","friend":"Alfredo"}'
+curl -k --location --request POST 'https://[EXTERNAL-IP OF THE "microgateway" service]/api/rest/execute_money_transfer.php' --header 'Content-Type: application/json' --data-raw '{"amount":"77","account":"2075894","currency":"EUR","friend":"Alfredo"}'
 </pre>
 You should receive a success message and if you go to the main application and refresh the page you will be able to see the transaction we just did in the "Transfer History" location.
 
@@ -289,8 +289,8 @@ Now we will run the same command but now we will include the "apikey" header wit
 
 <pre>
 Commands:
-export apikey=<REPLACE WITH THE PREVIOUSLY SAVE API KEY>
-curl -k --location --request POST 'https://<EXTERNAL-IP OF THE "microgateway" service>/api/rest/execute_money_transfer.php' --header "apikey: $apikey" --header 'Content-Type: application/json' --data-raw '{"amount":"77","account":"2075894","currency":"EUR","friend":"Alfredo"}'
+export apikey=[REPLACE WITH THE PREVIOUSLY SAVE API KEY]
+curl -k --location --request POST 'https://[EXTERNAL-IP OF THE "microgateway" service]/api/rest/execute_money_transfer.php' --header "apikey: $apikey" --header 'Content-Type: application/json' --data-raw '{"amount":"77","account":"2075894","currency":"EUR","friend":"Alfredo"}'
 </pre>
 
 
