@@ -137,6 +137,9 @@ Lets look for the reason why our bad requests were blocked, add a filter with th
 
 In the right side of the panel you can see the request log and the reason why it was blocked.
 Continue and explore the visualization capabilities of Kibana while receiving the relevant log information from Nginx Waf by looking into the next two buttons bellow the "Discover" button.
+
+![](images/7env.JPG)
+
 ### THE END
 ### Hope you have enjoyed the workshop.
-![](images/7env.JPG)
+
