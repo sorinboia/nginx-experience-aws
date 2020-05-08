@@ -73,5 +73,5 @@ Use NGINX Unit as the foundation for your service mesh:
 - Built-in SSL/TLS support
 
 More information can be found [here](https://www.nginx.com/products/nginx-unit/#resources).  
-![](images/4env.jpg)
+![](images/4env.JPG)
 #### [Next part](5ingress.md)

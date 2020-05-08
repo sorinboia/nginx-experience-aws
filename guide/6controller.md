@@ -3,13 +3,14 @@
 We have finished the first part of the publishing our application, now we want to publish our APIs to be used by third party organizations.  
 We will acomplish this using two components:
 - Nginx Controller which will be used as an API Management
-- Nginx Container will be the API Micro gateway which will reside within the Kubernetes environment
+- Nginx Container will be the API Microgateway which will reside within the Kubernetes environment
 
 
-The EC2 that we will use for Nginx Controller has already been deployed, we need to find the public IP address.
+The Nginx Controller has already been deployed with the terraform declaration, we need to find the public IP address.
 <pre>
 Command:
 tf state show "aws_instance.controller" | grep "public_ip"
+
 Output:
     associate_public_ip_address  = true
     public_ip                    = "18.184.134.91"
@@ -265,6 +266,6 @@ Now in order to check that all is working as expected we will do the following:
 
 
 All of our microgateway api configuration is finished. We have published both external and internal APIs and are able to gather and view statistics for traffic coming from external clients and also internally when a service is contacting anther. We have achieved the bellow architecture. 
-![](images/6env.jpg)
+![](images/6env.JPG)
 
 #### [Next part](7security.md)

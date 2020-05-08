@@ -86,7 +86,7 @@ Now you just need to browse again to the arcadia main page present the client ce
 We are finished with this part of our experiance and achieved the bellow environment.  
 Also before moving forward reapply the ingress configuration without the two lines we just added.
 
-![](images/5env.jpg)
+![](images/5env.JPG)
 
 #### [Next part](6controller.md)
 

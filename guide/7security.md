@@ -128,15 +128,15 @@ After that lets do an attack and verify that it is blocked by doing a Cross Site
 On each of the blocked requests you have received a support ID, save it for later.  
 Browse to ELK as before and click the "Discover" button:  
 
-![](images/kibana1.jpg)  
+![](images/kibana1.JPG)  
 
 You will see all of the request logs,good and bad, sent by Nginx Waf to ELK.
 Lets look for the reason why our bad requests were blocked, add a filter with the support ID you have received as seen bellow.
   
-![](images/kibana2.jpg)  
+![](images/kibana2.JPG)  
 
 In the right side of the panel you can see the request log and the reason why it was blocked.
 Continue and explore the visualization capabilities of Kibana while receiving the relevant log information from Nginx Waf by looking into the next two buttons bellow the "Discover" button.
 ### THE END
 ### Hope you have enjoyed the workshop.
-![](images/7env.jpg)
+![](images/7env.JPG)
