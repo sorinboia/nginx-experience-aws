@@ -51,6 +51,24 @@ spec:
 EOF
 </pre>
 
+Lets check that we did so far is actually working. Run the following command:
+
+<pre>
+Command:
+kubectl get svc --namespace=nginx-ingress
+
+Output:
+NAME                      TYPE           CLUSTER-IP      EXTERNAL-IP                                                                 PORT(S)                      AGE
+dashboard-nginx-ingress   LoadBalancer   172.20.36.60    aeb592ad4011544219c0bc49581baa13-421891138.eu-central-1.elb.amazonaws.com   80:32044/TCP                 11m
+nginx-ingress             LoadBalancer   172.20.14.206   ab21b88fec1f445d98c79398abc2cd5d-961716132.eu-central-1.elb.amazonaws.com   80:30284/TCP,443:31110/TCP   5h35m
+</pre>
+
+Note the EXTERNAL-IP of the "dashboard-nginx-ingress". This is the hostname that we are going to use in order to view the Nginx Dashboard.
+Browse to the following location and verify that you can see the dashboard: http://<EXTERNAL-IP of "dashboard-nginx-ingress" service>/dashboard.html
+
+Note the EXTERNAL-IP of the "nginx-ingress". This is the hostname that we are going to use in order to publish the Arcadia web application.
+Browse to the following location and verify that you receive a 404 status code: http://<EXTERNAL-IP of "nginx-ingress" service>/
+
 
 
 ##### Now we can get to the interesting part
@@ -82,23 +100,12 @@ spec:
           servicePort: 80
 </pre>
 
-<pre>
-Command:
-kubectl get svc --namespace=nginx-ingress
 
-Output:
-NAME                      TYPE           CLUSTER-IP      EXTERNAL-IP                                                                 PORT(S)                      AGE
-dashboard-nginx-ingress   LoadBalancer   172.20.36.60    aeb592ad4011544219c0bc49581baa13-421891138.eu-central-1.elb.amazonaws.com   80:32044/TCP                 11m
-nginx-ingress             LoadBalancer   172.20.14.206   ab21b88fec1f445d98c79398abc2cd5d-961716132.eu-central-1.elb.amazonaws.com   80:30284/TCP,443:31110/TCP   5h35m
 
-</pre>
+At this stage basic install is finished and all is left is to check connectivity to the Arcadia web application, get the public hostname of the exposed Nginx Ingress.  
+Browse to the following location and verify that you can access the site: http://<EXTERNAL-IP of "nginx-ingress" service>/
 
-At this stage basic install is finished and all is left is to check connectivity, get the public hostname of the exposed Nginx Ingress.
 
-  
-Verify that you have access to the dashboard the following way: http://dashboard-nginx-ingress-EXTERNAL-IP/dashboard.html
-
-Now you can browse to the application and verify that it is working.
 At the moment we still have two key features missing:
 1. We are serving only http, no https. We want our site to be fully secured therefor all communication need to be encrypted.
 2. We are not actively monitoring the health of the pods through the data path
@@ -111,7 +118,7 @@ Command:
 kubectl apply -f files/5ingress/2arcadia.yaml
 </pre>
 
-If you look at the Nginx dashboard you can see that right now each upstream has 2 members but no health checks are being done.  
+If you look at the Nginx dashboard you can see that right now that two HTTP upstreams have 2 members but no health checks are being done.  
 In our next step we will finish this part of the configuration, we will implement the following:  
 - Enable health checks
 - Enable https for the application and redirect http requests to https
