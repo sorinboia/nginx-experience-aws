@@ -62,10 +62,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - aa6fc0963b1d34ba2b37b91241738f39-1193087591.eu-central-1.elb.amazonaws.com
+    - MUST BE REPLACED WITH "EXTERNAL-IP" OF THE "nginx-ingress" SERVICE
     secretName: arcadia-tls
   rules:
-  - host: aa6fc0963b1d34ba2b37b91241738f39-1193087591.eu-central-1.elb.amazonaws.com
+  - host: MUST BE REPLACED WITH "EXTERNAL-IP" OF THE "nginx-ingress" SERVICE
     http:
       paths:
       - path: /
@@ -82,9 +82,54 @@ spec:
           servicePort: 80
 </pre>
 
-Now you just need to browse again to the arcadia main page present the client certificate and you will get access.  
+Right now browse to again to Arcadia and you will see that you can't access the site since you don't have the client certificate.  
+In order to verify that this is actually working run the bellow command, it will use client cert/key pair in our to authenticate.
+> curl -v -k --key certs_for_mtls/01-alice.key --cert certs_for_mtls/01-alice.pem https://<MUST BE REPLACED WITH "EXTERNAL-IP" OF THE "nginx-ingress" SERVICE>/
+
+
 We are finished with this part of our experiance and achieved the bellow environment.  
 Also before moving forward reapply the ingress configuration without the two lines we just added.
+
+<pre>
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: arcadia
+  annotations:
+    nginx.com/health-checks: "true"    	
+    ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.com/sticky-cookie-services: "serviceName=arcadia-main srv_id expires=1h path=/"
+    nginx.org/server-snippets: |
+      proxy_ignore_headers X-Accel-Expires Expires Cache-Control;
+      proxy_cache_valid any 30s;      
+
+    nginx.org/location-snippets: |      
+      proxy_cache my_cache;
+      add_header X-Cache-Status $upstream_cache_status;
+
+spec:
+  tls:
+  - hosts:
+    - MUST BE REPLACED WITH "EXTERNAL-IP" OF THE "nginx-ingress" SERVICE
+    secretName: arcadia-tls
+  rules:
+  - host: MUST BE REPLACED WITH "EXTERNAL-IP" OF THE "nginx-ingress" SERVICE
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: arcadia-main
+          servicePort: 80
+      - path: /api/
+        backend:
+          serviceName: arcadia-app2
+          servicePort: 80
+      - path: /app3/
+        backend:
+          serviceName: arcadia-app3
+          servicePort: 80
+</pre>
+
 
 ![](images/5env.JPG)
 

@@ -111,7 +111,7 @@ At the moment we still have two key features missing:
 2. We are not actively monitoring the health of the pods through the data path
 
 
-First take a look at the files/5ingress/2arcadia.yaml file. It increases the number of pod to 2 for each service and also defines how the http health checks will looks like.
+First take a look at the files/5ingress/2arcadia.yaml file. It increases the number of pod to two of our services service and also defines how the http health checks will looks like.
 Lets apply this new configuration.
 <pre>
 Command:
