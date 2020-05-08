@@ -150,8 +150,11 @@ The developers of the Arcadia application as part of their development cycle are
 We are going to use this API specification in order to publish the services to the world.
 
 WE will run the following curl commands and don't forget to change the controller IP address.
-> curl -k -c cookie.txt -X POST --url "https://<CHANGE TO CONTROLLER IP ADDRESS>/api/v1/platform/login" --header 'Content-Type: application/json' --data '{"credentials": {"type": "BASIC","username": "s@s.com","password": "sorin2019"}}'
-> curl -k -b cookie.txt -c cookie.txt --location --request PUT 'https://<CHANGE TO CONTROLLER IP ADDRESS>/api/v1/services/api-definitions/arcadia-api/oas-config' --header 'Content-Type: application/json' --header 'Content-Type: text/plain' --data "@files/6controller/arcadia_api_spec.json"
+<pre>
+Commands:
+curl -k -c cookie.txt -X POST --url "https://<CHANGE TO CONTROLLER IP ADDRESS>/api/v1/platform/login" --header 'Content-Type: application/json' --data '{"credentials": {"type": "BASIC","username": "s@s.com","password": "sorin2019"}}'  
+curl -k -b cookie.txt -c cookie.txt --location --request PUT 'https://<CHANGE TO CONTROLLER IP ADDRESS>/api/v1/services/api-definitions/arcadia-api/oas-config' --header 'Content-Type: application/json' --header 'Content-Type: text/plain' --data "@files/6controller/arcadia_api_spec.json"
+</pre>
 
 We have just uploaded the OpenApi spec to the Nginx Controller.  
 Go to "N" -> "APIs" -> "API Definitions". You can see listed the "Arcadia API" definition.  
@@ -200,18 +203,18 @@ Return to "N" -> "Services"-> "APIs" -> "API Definitions" -> "Pen" Icon -> "Add 
 
 Once the public API has been published we need to take the same procedure and do the same for the internal APIs that are accessing the Arcadia Backend service.  
 
-##### "N" -> "Services" -> "Environments" -> "Create"  
-> Name: internal
+##### "N" -> "Services" -> "Environments" -> "Create Environment"  
+> Name: internal  
 > Tags: internal
 
-##### "N" -> "Services" -> "Gateways" -> "Create"
-> Name: backend 
+##### "N" -> "Services" -> "Gateways" -> "Create Gateway"
+> Name: backend   
 > Environment: internal  
 > Instance Refs: Select All  
 > Hostname: http://backend  
 
 
-##### "N" -> "Services" -> "Apps" -> "Create"
+##### "N" -> "Services" -> "Apps" -> "Create App"
 > Name: arcadia-backend   
 > Environment: internal
 
@@ -224,7 +227,7 @@ We could continue and import the OpenApi spec of the backend service as before b
 > Gateway Refs: backend  
 > URIs: /  
 > Workload Group Name: arcadia-backend    
-> URI: http://arcadia-backend
+> URI: http://arcadia-backend:8080
 
 Now we just need to tell kubernetes to point to the microgateway instead of directly to the pods.
 <pre>
@@ -245,7 +248,13 @@ spec:
 
 
 Next we are going to test an API call to our published APIs.  
-Run the Postman request "Transfer Money - No Auth". You should receive a success message and if you go to the main application and refresh the page you will be able to see the trasaction we just did in the "Transfer History" location.
+
+Run the bellow curl command.
+<pre>
+Command:
+curl -k --location --request POST 'https://<EXTERNAL-IP OF THE "microgateway" service>/api/rest/execute_money_transfer.php' --header 'Content-Type: application/json' --data-raw '{"amount":"77","account":"2075894","currency":"EUR","friend":"Alfredo"}'
+</pre>
+You should receive a success message and if you go to the main application and refresh the page you will be able to see the transaction we just did in the "Transfer History" location.
 
 All looks good but we are not done, we should add some security to our API and enable access with access keys.
 
@@ -258,7 +267,7 @@ All looks good but we are not done, we should add some security to our API and e
 > Name: test  
 > Save
 
-Copy the key and update the postman environment variable "api_key"
+Copy the key that was just create and save it for later.
 
 ###### "N" -> "Services" -> "APIs" -> "API Definitions" -> "Pen" icon next to "arcadia-pub-api"
 > Add a policy  
@@ -266,12 +275,25 @@ Copy the key and update the postman environment variable "api_key"
 > Identity Provider: api-protect
 > Credential Location apikey: HTTP request header  
 > Header name: apikey    
-> Save
+> Save  
 > Publish
 
 Now in order to check that all is working as expected we will do the following:
-1. Run the Postman request "Transfer Money - No Auth". You should receive a 401 message since this request has no api key.
-2. Run the Postman request "Transfer Money - With Auth". You should receive a success message and if you go to the main application and refresh the page you will be able to see the trasaction we just did in the "Transfer History" location.
+We will run the preview curl command and we will recevie a 401 status code.
+
+<pre>
+curl -k --location --request POST 'https://<EXTERNAL-IP OF THE "microgateway" service>/api/rest/execute_money_transfer.php' --header 'Content-Type: application/json' --data-raw '{"amount":"77","account":"2075894","currency":"EUR","friend":"Alfredo"}'
+</pre>
+
+Now we will run the same command but now we will include the "apikey" header with the api key we previously generated and the transaction will succeed again.
+
+<pre>
+Commands:
+export apikey=<REPLACE WITH THE PREVIOUSLY SAVE API KEY>
+curl -k --location --request POST 'https://<EXTERNAL-IP OF THE "microgateway" service>/api/rest/execute_money_transfer.php' --header "apikey: $apikey" --header 'Content-Type: application/json' --data-raw '{"amount":"77","account":"2075894","currency":"EUR","friend":"Alfredo"}'
+</pre>
+
+
 
 
 All of our microgateway api configuration is finished. We have published both external and internal APIs and are able to gather and view statistics for traffic coming from external clients and also internally when a service is contacting anther. We have achieved the bellow architecture. 
