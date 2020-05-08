@@ -61,7 +61,7 @@ kube-proxy-wmmxw           1/1     Running   0          14m
 
 At the moment we have our setup deployed as it can be seen in the bellow diagram.
 
-![](images/3env.jpg)
+![](images/3env.JPG)
 
 Change the directory back to the original repo folder:
 ```
