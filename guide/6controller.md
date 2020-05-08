@@ -10,7 +10,7 @@ The Nginx Controller has already been deployed with the terraform declaration, w
 > cd terraform
 <pre>
 Command:
-tf state show "aws_instance.controller" | grep "public_ip"
+terraform state show "aws_instance.controller" | grep "public_ip"
 
 Output:
     associate_public_ip_address  = true
@@ -91,7 +91,7 @@ The end goal will be to expose and protect our APIs both internally within the c
 Login to the Nginx Controller web UI, click the "N" button on the upper left side and go to "Instances".  
 You will see listed the microgateway we just deployed. If it is not there wait 2 minutes, it takes a little bit of time for the instance to register.
 
-Lets get the IP/fqdn of the microgateway service we just published, we will use it later on within our config.
+Lets get the EXTERNAL-IP of the microgateway service we just published, we will use it later on within our config.
 <pre>
 Command:
 kubectl get svc microgateway
@@ -103,7 +103,7 @@ microgateway   LoadBalancer   172.20.181.0   ae0aa9bf7704745fbb2a47da2c3a2039-25
 
 
 Now we will build our configuration:
-##### "N" -> "Services" -> "Environments" -> "Create"  
+##### "N" -> "Services" -> "Environments" -> "Create Environment"  
 Enter in all the field the following value "prod".  
 Click on "View Api Request".  
 All configuration on the Nginx Controller can easlly automated with external orchestration systems, this view can help you in understanding how to generate the configuration API calls.
@@ -122,18 +122,22 @@ The output will look like this:
 }
 </pre> 
 
-##### "N" -> "Services" -> "Certs" -> "Create"
-> Name: sorin-wild  
+Click "Submit".
+
+##### "N" -> "Services" -> "Certs" -> "Create Cert"
+> Name: server-cert   
 > Environment: prod  
-> Upload key and certificate from the "cert" directory
+> Chose "Copy and paste PEM text"
+> Private Key: Browse to https://raw.githubusercontent.com/sorinboia/nginx-experience-aws/master/certs_for_mtls/ca.key copy and paste.  
+> Public Cert: Browse to https://raw.githubusercontent.com/sorinboia/nginx-experience-aws/master/certs_for_mtls/ca.pem copy and paste.
 
 
-##### "N" -> "Services" -> "Gateways" -> "Create"
+##### "N" -> "Services" -> "Gateways" -> "Create Gateway"
 > Name: api.arcadia.sorinb.cloud   
 > Environment: prod  
 > Instance Refs: Select All  
 > Hostname: https://<EXTERNAL-IP OF THE "microgateway" SERVICE>  
-> Cert Reference: sorin-wild
+> Cert Reference: server-cert
 
 ##### "N" -> "Services" -> "Apps" -> "Create"
 > Name: arcadia-api   
