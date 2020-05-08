@@ -7,6 +7,7 @@ We will acomplish this using two components:
 
 
 The Nginx Controller has already been deployed with the terraform declaration, we need to find the public IP address.
+> cd terraform
 <pre>
 Command:
 tf state show "aws_instance.controller" | grep "public_ip"
@@ -15,7 +16,7 @@ Output:
     associate_public_ip_address  = true
     public_ip                    = "18.184.134.91"
 </pre>
-
+> cd ..
 
 Https browse to the IP address of the Controller.
 > username: s@s.com  
@@ -23,6 +24,9 @@ Https browse to the IP address of the Controller.
 
 Next step is to get the API key to connect the microgateway so it is managed by the controller.
 One you login the first thing you will see is the API key, save it for later.
+
+![](images/controller_apikey.JPG)
+
 
 Now lets deploy the microgateway with the following configuration and don't forget to replace the IP address and API key of the controller:
 <pre>
