@@ -139,23 +139,23 @@ Click "Submit".
 > Hostname: https://<EXTERNAL-IP OF THE "microgateway" SERVICE>  
 > Cert Reference: server-cert
 
-##### "N" -> "Services" -> "Apps" -> "Create"
+##### "N" -> "Services" -> "Apps" -> "Create App"
 > Name: arcadia-api   
 > Environment: prod  
 
 
 So far we have created an environment, uploaded the certificate/key that we will use gor our https connection, created a gateway which represent our entry point within the API gateway and last defined a new application object.  
-Next we are going to publish the application APIs to the world, there are two aways of creating this configuration, the first one is manual and the second one is described bellow.
+Next we are going to publish the application APIs to the world, there are two ways of creating this configuration, the first one is manual similar to the way we performed the configuration until this point and the second one is described bellow.  
 The developers of the Arcadia application as part of their development cycle are generating an [OpenApi](https://swagger.io/docs/specification/about/) specification do describe their APIs.  
 We are going to use this API specification in order to publish the services to the world.
 
-Open Postman and change in the environment variables the "controller_ip" to point to the IP address of the Nginx Controller we've just deployed.  
-1. Run the "Log in to NGINX Controller" request
-2. Run the "Create Arcadia OpenAPI Spec"  
+WE will run the following curl commands and don't forget to change the controller IP address.
+> curl -k -c cookie.txt -X POST --url "https://<CHANGE TO CONTROLLER IP ADDRESS>/api/v1/platform/login" --header 'Content-Type: application/json' --data '{"credentials": {"type": "BASIC","username": "s@s.com","password": "sorin2019"}}'
+> curl -k -b cookie.txt -c cookie.txt --location --request PUT 'https://<CHANGE TO CONTROLLER IP ADDRESS>/api/v1/services/api-definitions/arcadia-api/oas-config' --header 'Content-Type: application/json' --header 'Content-Type: text/plain' --data "@files/6controller/arcadia_api_spec.json"
 
 We have just uploaded the OpenApi spec to the Nginx Controller.  
 Go to "N" -> "APIs" -> "API Definitions". You can see listed the "Arcadia API" definition.  
- Click the "Pen" icon of the "Arcadia API" and you can see a list of the defined APIs endpoints.  
+Click the "Pen" icon of the "Arcadia API" and you can see a list of the defined APIs endpoints.  
  
  Now we are going to check the DNS name of the backend servers we need to point to:
  <pre>
@@ -175,7 +175,7 @@ Go to "N" -> "APIs" -> "API Definitions". You can see listed the "Arcadia API" d
 
 We are interested in "main" and "app2" and their DNS names are "arcadia-main" and "arcadia-app2".
 
-##### "N" -> "Services" -> "APIs" -> "Workload Groups" -> "Create"
+##### "N" -> "Services" -> "APIs" -> "Workload Groups" -> "Create a Workload Group"
 Create the configuration of each of the "Work loads"
 > Name: arcadia-app2  
 > Click Save  
@@ -184,7 +184,8 @@ Add workload
 > First input: arcadia-app2  
 > Port: 80  
 
-Repeat the steps above for "arcadia-main".  
+Repeat the steps above for "arcadia-main". 
+   
 Return to "N" -> "Services"-> "APIs" -> "API Definitions" -> "Pen" Icon -> "Add a published API"
 > Published API Name: arcadia-pub-api  
 > Environment: prod  

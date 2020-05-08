@@ -1,0 +1,154 @@
+{
+  "metadata": {
+    "name": "arcadia-api",
+    "displayName": "Arcadia API",
+    "description": "Arcadia API Definition",
+    "tags": []
+  },
+  "desiredState": {
+    "spec": {
+      "openapi": "3.0.0",
+      "info": {
+        "description": "Arcadia OpenAPI",
+        "title": "F5Forum",
+        "version": "1.0.0"
+      },
+      "paths": {
+        "/api/rest/execute_money_transfer.php": {
+          "post": {
+            "summary": "Transfer money to a friend",
+            "parameters": [
+              {
+                "in": "query",
+                "type": "integer",
+                "name": "amount",
+                "required": true
+              },
+              {
+                "in": "query",
+                "type": "integer",
+                "name": "account",
+                "required": true
+              },
+              {
+                "in": "query",
+                "type": "string",
+                "name": "currency",
+                "required": true
+              },
+              {
+                "in": "query",
+                "type": "string",
+                "name": "friend",
+                "required": true
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "200 response"
+              }
+            }
+          }
+        },
+        "/trading/rest/buy_stocks.php": {
+          "post": {
+            "summary": "Add stocks to your portfolio",
+            "parameters": [
+              {
+                "in": "query",
+                "type": "integer",
+                "name": "trans_value",
+                "required": true
+              },
+              {
+                "in": "query",
+                "type": "integer",
+                "name": "qty",
+                "required": true
+              },
+              {
+                "in": "query",
+                "type": "string",
+                "name": "company",
+                "required": true
+              },
+              {
+                "in": "query",
+                "type": "string",
+                "name": "action",
+                "required": true
+              },
+              {
+                "in": "query",
+                "type": "integer",
+                "name": "stock_price",
+                "required": true
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "200 response"
+              }
+            }
+          }
+        },
+        "/trading/rest/sell_stocks.php": {
+          "post": {
+            "summary": "Sell stocks that you own",
+            "parameters": [
+              {
+                "in": "query",
+                "type": "integer",
+                "name": "trans_value",
+                "required": true
+              },
+              {
+                "in": "query",
+                "type": "integer",
+                "name": "qty",
+                "required": true
+              },
+              {
+                "in": "query",
+                "type": "string",
+                "name": "company",
+                "required": true
+              },
+              {
+                "in": "query",
+                "type": "string",
+                "name": "action",
+                "required": true
+              },
+              {
+                "in": "query",
+                "type": "integer",
+                "name": "stock_price",
+                "required": true
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "200 response"
+              }
+            }
+          }
+        },
+        "/trading/transactions.php": {
+          "get": {
+            "summary": "Get the latests transactions that have happened",
+            "responses": {
+              "200": {
+                "description": "200 response",
+                "examples": {
+                  "application/json": "{\"example\" : \"value\"}"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "currentStatus": {}
+}
