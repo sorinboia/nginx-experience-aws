@@ -10,37 +10,25 @@ Nginx Kubernetes Ingress to save the day :).
 
  
 ##### Lets start by doing the Nginx deployment.
-We are going to use Nginx installation with manifests following the step by step instructions on the Nginx site.
-Follow the instructions (we have already prepared the Nginx Plus image so there is not need to do that)and stop after finishing the second stage (Create Common Resources).  
-[https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/](https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/)   
+We are going to use manifests Nginx installation based on the [Nginx Ingress Controller installation guide](https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/).
+For simplicity reason we have already prepared the installation in a single yaml file.  
+Simply run the command bellow.  
 
-
-To be able and use the full Nginx capabilities we are going to use Nginx Plus.  
-Nginx Plus requires you to build your own container prior to the deployment, we need to change the location the container image is pulled from.  
-Edit the file at "deployment/nginx-plus-ingress.yaml", instead of:
 <pre>
-- image: nginx-plus-ingress:1.7.0
+Command:
+kubectl apply -f files/5ingress/nginx-ingress-install.yaml
+
+Output:
+namespace/nginx-ingress created
+serviceaccount/nginx-ingress created
+clusterrole.rbac.authorization.k8s.io/nginx-ingress created
+clusterrolebinding.rbac.authorization.k8s.io/nginx-ingress created
+secret/default-server-secret created
+configmap/nginx-config created
+deployment.apps/nginx-ingress created
+service/nginx-ingress created
 </pre>
-
-It should look like this:
-<pre>
-- image: sorinboia/nginx-plus-ingress:1.7.0
-</pre>
-
-Additionally we want to allow access to the dashboard, please edit the args block to reflect the bellow ( we have added the following line - -nginx-status-allow-cidrs=0.0.0.0/0):
-<pre>
-        args:
-          - -nginx-plus
-          - -nginx-configmaps=$(POD_NAMESPACE)/nginx-config
-          - -default-server-tls-secret=$(POD_NAMESPACE)/default-server-secret
-          - -nginx-status-allow-cidrs=0.0.0.0/0
-</pre>
-
-
-
-Save the file and continue with the instructions in the Nginx installation guide. 
-We are doing to deploy Nginx Ingress as a "Deployment" not a "DeamonSet" and the Nginx plus configuration.
-
+  
 Next we need to run the following in order to expose the Nginx Dashboard ( copy and paste in the command line the bellow ).
 <pre>
 cat << EOF | kubectl apply -f -
