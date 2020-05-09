@@ -127,7 +127,7 @@ Click "Submit".
 ##### "N" -> "Services" -> "Certs" -> "Create Cert"
 > Name: server-cert   
 > Environment: prod  
-> Chose "Copy and paste PEM text"
+> Chose "Copy and paste PEM text"  
 > Private Key: Browse to https://raw.githubusercontent.com/sorinboia/nginx-experience-aws/master/certs_for_mtls/ca.key copy and paste.  
 > Public Cert: Browse to https://raw.githubusercontent.com/sorinboia/nginx-experience-aws/master/certs_for_mtls/ca.pem copy and paste.
 
@@ -152,8 +152,8 @@ We are going to use this API specification in order to publish the services to t
 WE will run the following curl commands and don't forget to change the controller IP address.
 <pre>
 Commands:
-curl -k -c cookie.txt -X POST --url "https://<CHANGE TO CONTROLLER IP ADDRESS>/api/v1/platform/login" --header 'Content-Type: application/json' --data '{"credentials": {"type": "BASIC","username": "s@s.com","password": "sorin2019"}}'  
-curl -k -b cookie.txt -c cookie.txt --location --request PUT 'https://<CHANGE TO CONTROLLER IP ADDRESS>/api/v1/services/api-definitions/arcadia-api/oas-config' --header 'Content-Type: application/json' --header 'Content-Type: text/plain' --data "@files/6controller/arcadia_api_spec.json"
+curl -k -c cookie.txt -X POST --url "https://[CHANGE TO CONTROLLER IP ADDRESS]/api/v1/platform/login" --header 'Content-Type: application/json' --data '{"credentials": {"type": "BASIC","username": "s@s.com","password": "sorin2019"}}'  
+curl -k -b cookie.txt -c cookie.txt --location --request PUT 'https://[CHANGE TO CONTROLLER IP ADDRESS]/api/v1/services/api-definitions/arcadia-api/oas-config' --header 'Content-Type: application/json' --header 'Content-Type: text/plain' --data "@files/6controller/arcadia_api_spec.json"
 </pre>
 
 We have just uploaded the OpenApi spec to the Nginx Controller.  
@@ -227,7 +227,7 @@ We could continue and import the OpenApi spec of the backend service as before b
 > Gateway Refs: backend  
 > URIs: /  
 > Workload Group Name: arcadia-backend    
-> URI: http://arcadia-backend:8080
+> URI: http://arcadia-backend  
 
 Now we just need to tell kubernetes to point to the microgateway instead of directly to the pods.
 <pre>
@@ -282,7 +282,7 @@ Now in order to check that all is working as expected we will do the following:
 We will run the preview curl command and we will recevie a 401 status code.
 
 <pre>
-curl -k --location --request POST 'https://<EXTERNAL-IP OF THE "microgateway" service>/api/rest/execute_money_transfer.php' --header 'Content-Type: application/json' --data-raw '{"amount":"77","account":"2075894","currency":"EUR","friend":"Alfredo"}'
+curl -k --location --request POST 'https://[EXTERNAL-IP OF THE "microgateway" service]/api/rest/execute_money_transfer.php' --header 'Content-Type: application/json' --data-raw '{"amount":"77","account":"2075894","currency":"EUR","friend":"Alfredo"}'
 </pre>
 
 Now we will run the same command but now we will include the "apikey" header with the api key we previously generated and the transaction will succeed again.
