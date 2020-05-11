@@ -23,7 +23,8 @@ terraform apply --auto-approve
 
 
 It will take around 10 minutes for Terraform and AWS to finish the initial deployment.
-While you wait, you can review the [Introduction section of the AWS EKS Workshop](https://eksworkshop.com/010_introduction/) to learn about Kubernetes and Amazon EKS basics.
+While you wait, you can review the [Introduction section of the AWS EKS Workshop](https://eksworkshop.com/010_introduction/) to learn about Kubernetes and Amazon EKS basics.  
+
 Once Terraform is done, we need to verify the deployment is working as expected and we are able to control the Kubernetes environment.
 
 We need to save the remote access config for the Kubernetes cluster locally:  
