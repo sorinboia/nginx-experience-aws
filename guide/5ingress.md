@@ -256,6 +256,16 @@ spec:
           servicePort: 80
 </pre>
 
+<details>
+  <summary>Click here for detailed instructions.</summary>
+ 
+```bash
+kubectl apply -f files/5ingress/nginx-ingress-update.yaml
+  ```
+
+</details>
+
+
 We have two simple indicators to check that all is working:  
 - First if we open the browser developer tools we can see a new http header in the response called "X-Cache-Status".  
 If the response was taken from the cache it will have a value of "HIT" otherwise if it was server by the server the value will be "MISS"
