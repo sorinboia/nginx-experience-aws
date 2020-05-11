@@ -205,6 +205,16 @@ data:
     proxy_cache_path /var/tmp/a levels=1:2 keys_zone=my_cache:10m max_size=100m inactive=60m use_temp_path=off;
 </pre>
 
+<details>
+  <summary>Click here for detailed instructions.</summary>
+ 
+```bash
+kubectl apply -f files/5ingress/nginx-config.yaml
+  ```
+
+</details>
+
+
 Next we will tell our Nginx Ingress to start using it and start caching:
 <pre>
 apiVersion: extensions/v1beta1
