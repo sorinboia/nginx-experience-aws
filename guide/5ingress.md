@@ -1,12 +1,11 @@
 ## Increase availability, security and application performance with Kubernetes Nginx Ingress - part 1
 
 Now we are getting to the interesting part.  
-Previously we have deployed the application but was able to expose only the Main service.  
-This is due to the fact that the application accesses the additional features through the same exposed IP:port which was currently routed to only the Main service.
+Previously we have deployed the application but did not expose the services.  
 
-We need to be able and understand the requests and send them to the relevant service.
+We need to be able to route the requests to the relevant service.
 
-Nginx Kubernetes Ingress to save the day :).
+Nginx Kubernetes Ingress to save the day! :).
 
  
 ##### Lets start by doing the Nginx deployment.
