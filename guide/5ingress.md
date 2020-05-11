@@ -215,7 +215,9 @@ kubectl apply -f files/5ingress/nginx-config.yaml
 </details>
 
 
-Next we will tell our Nginx Ingress to start using it and start caching:
+Next we will tell our Nginx Ingress to start using it and start caching.  
+Create a new file nginx-ingress-update.yaml with the configuration below and apply it.  
+
 <pre>
 apiVersion: extensions/v1beta1
 kind: Ingress
