@@ -28,7 +28,7 @@ deployment.apps/nginx-ingress created
 service/nginx-ingress created
 </pre>
   
-Next we need to run the following in order to expose the Nginx Dashboard (copy and paste in the command line the bellow).
+Next we need to run the following in order to expose the Nginx Ingress Dashboard (copy and paste in the command line the bellow).
 <pre>
 cat << EOF | kubectl apply -f -
 apiVersion: v1
@@ -62,10 +62,10 @@ dashboard-nginx-ingress   LoadBalancer   172.20.36.60    aeb592ad4011544219c0bc4
 nginx-ingress             LoadBalancer   172.20.14.206   ab21b88fec1f445d98c79398abc2cd5d-961716132.eu-central-1.elb.amazonaws.com   80:30284/TCP,443:31110/TCP   5h35m
 </pre>
 
-Note the EXTERNAL-IP of the "dashboard-nginx-ingress". This is the hostname that we are going to use in order to view the Nginx Dashboard.
+Note the EXTERNAL-IP of the "dashboard-nginx-ingress". This is the hostname that we are going to use in order to view the Nginx Dashboard.  
 Browse to the following location and verify that you can see the dashboard: http://`<DASHBOARD-EXTERNAL-IP>`/dashboard.html
 
-Note the EXTERNAL-IP of the "nginx-ingress". This is the hostname that we are going to use in order to publish the Arcadia web application.
+Note the EXTERNAL-IP of the "nginx-ingress". This is the hostname that we are going to use in order to publish the Arcadia web application.  
 Browse to the following location and verify that you receive a 404 status code: http://`<INGRESS-EXTERNAL-IP>`/  
 
 Please note that it might take some time for the DNS names to become available.
@@ -100,6 +100,8 @@ spec:
           serviceName: arcadia-app3
           servicePort: 80
 </pre>
+
+Note how the various HTTP paths (`/, /api/, /app3/`) are routed by Ingress to the relevant K8s services.  
 
 Now apply the configuration.
 <details>
