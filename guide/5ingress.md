@@ -50,7 +50,7 @@ spec:
 EOF
 </pre>
 
-Lets check that we did so far is actually working. Run the following command:
+Lets check what we did so far is actually working. Run the following command:
 
 <pre>
 Command:
@@ -63,17 +63,19 @@ nginx-ingress             LoadBalancer   172.20.14.206   ab21b88fec1f445d98c7939
 </pre>
 
 Note the EXTERNAL-IP of the "dashboard-nginx-ingress". This is the hostname that we are going to use in order to view the Nginx Dashboard.
-Browse to the following location and verify that you can see the dashboard: http://<EXTERNAL-IP of "dashboard-nginx-ingress" service>/dashboard.html
+Browse to the following location and verify that you can see the dashboard: http://<DASHBOARD-EXTERNAL-IP>/dashboard.html
 
 Note the EXTERNAL-IP of the "nginx-ingress". This is the hostname that we are going to use in order to publish the Arcadia web application.
-Browse to the following location and verify that you receive a 404 status code: http://<EXTERNAL-IP of "nginx-ingress" service>/
+Browse to the following location and verify that you receive a 404 status code: http://<INGRESS-EXTERNAL-IP>/  
 
+Please note that it might take some time for the DNS names to become available.
 
 
 ##### Now we can get to the interesting part
 First we are going to expose all the application services and route traffic based on the HTTP path.
 We will start with a basic configuration.
-First create a new file, for example arcadia-vs.yaml, add the bellow configuration and apply it:
+First create a new file (for example arcadia-vs.yaml) using the configuration bellow.  
+Please note: you need to replace the `host` value with the EXTERNAL-IP of the `nginx-ingress` service.
 
 <pre>
 apiVersion: extensions/v1beta1
@@ -99,6 +101,13 @@ spec:
           servicePort: 80
 </pre>
 
+Now apply the configuration
+<details>
+  <summary>Click here for detailed instructions</summary>
+```bash
+kubectl apply -f files/5ingress/arcadia-vs.yaml
+  ```
+</details>
 
 
 At this stage basic install is finished and all is left is to check connectivity to the Arcadia web application, get the public hostname of the exposed Nginx Ingress.  
