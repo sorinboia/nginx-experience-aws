@@ -143,6 +143,8 @@ In our next step we will finish this part of the configuration, we will implemen
 - Enable https for the application and redirect http requests to https
 
 Create `ingress-arcadia.yaml` to reflect the bellow and apply the configuration.
+Please note: you need to replace the `host` value with the EXTERNAL-IP of the `nginx-ingress` service.  
+
 <pre>
 apiVersion: v1
 kind: Secret
@@ -217,6 +219,8 @@ kubectl apply -f files/5ingress/nginx-config.yaml
 
 Next we will tell our Nginx Ingress to start using it and start caching.  
 Create a new file `nginx-ingress-update.yaml` with the configuration below and apply it.  
+Please note: you need to replace the `host` value with the EXTERNAL-IP of the `nginx-ingress` service.  
+
 
 <pre>
 apiVersion: extensions/v1beta1
