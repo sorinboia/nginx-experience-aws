@@ -63,10 +63,10 @@ nginx-ingress             LoadBalancer   172.20.14.206   ab21b88fec1f445d98c7939
 </pre>
 
 Note the EXTERNAL-IP of the "dashboard-nginx-ingress". This is the hostname that we are going to use in order to view the Nginx Dashboard.
-Browse to the following location and verify that you can see the dashboard: http://<DASHBOARD-EXTERNAL-IP>/dashboard.html
+Browse to the following location and verify that you can see the dashboard: http://`<DASHBOARD-EXTERNAL-IP>`/dashboard.html
 
 Note the EXTERNAL-IP of the "nginx-ingress". This is the hostname that we are going to use in order to publish the Arcadia web application.
-Browse to the following location and verify that you receive a 404 status code: http://<INGRESS-EXTERNAL-IP>/  
+Browse to the following location and verify that you receive a 404 status code: http://`<INGRESS-EXTERNAL-IP>`/  
 
 Please note that it might take some time for the DNS names to become available.
 
@@ -113,7 +113,7 @@ kubectl apply -f files/5ingress/arcadia-vs.yaml
 
 
 At this stage the basic install is finished and all that's left is to check the connectivity to the Arcadia web application, get the public hostname of the exposed `nginx-ingress` service.  
-Browse to the following location and verify that you can access the site: http://<INGRESS-EXTERNAL-IP>/  
+Browse to the following location and verify that you can access the site: http://`<INGRESS-EXTERNAL-IP>`/  
 
 Login to the application using the following credentials:
 
