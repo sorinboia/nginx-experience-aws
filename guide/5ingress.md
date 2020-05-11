@@ -5,12 +5,12 @@ Previously we have deployed the application but did not expose the services.
 
 We need to be able to route the requests to the relevant service.
 
-Nginx Kubernetes Ingress to save the day! :).
+Nginx Kubernetes Ingress to save the day! :)
 
  
-##### Lets start by doing the Nginx deployment.
-We are going to use manifests Nginx installation based on the [Nginx Ingress Controller installation guide](https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/).
-For simplicity reason we have already prepared the installation in a single yaml file.  
+##### Lets start with the Nginx deployment.
+We are going to use the Nginx installation manifests based on the [Nginx Ingress Controller installation guide](https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/).
+For simplicity - we have already prepared the installation in a single yaml file.  
 Simply run the command bellow.  
 
 <pre>
@@ -28,7 +28,7 @@ deployment.apps/nginx-ingress created
 service/nginx-ingress created
 </pre>
   
-Next we need to run the following in order to expose the Nginx Dashboard ( copy and paste in the command line the bellow ).
+Next we need to run the following in order to expose the Nginx Dashboard (copy and paste in the command line the bellow).
 <pre>
 cat << EOF | kubectl apply -f -
 apiVersion: v1
