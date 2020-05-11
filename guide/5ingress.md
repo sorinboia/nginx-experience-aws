@@ -112,16 +112,23 @@ kubectl apply -f files/5ingress/arcadia-vs.yaml
 </details>
 
 
-At this stage basic install is finished and all is left is to check connectivity to the Arcadia web application, get the public hostname of the exposed Nginx Ingress.  
-Browse to the following location and verify that you can access the site: http://<EXTERNAL-IP of "nginx-ingress" service>/
+At this stage the basic install is finished and all that's left is to check the connectivity to the Arcadia web application, get the public hostname of the exposed `nginx-ingress` service.  
+Browse to the following location and verify that you can access the site: http://<INGRESS-EXTERNAL-IP>/  
 
+Login to the application using the following credentials:
+
+```
+Username: admin
+Password: iloveblue
+```
 
 At the moment we still have two key features missing:
-1. We are serving only http, no https. We want our site to be fully secured therefor all communication need to be encrypted.
+1. We are serving only http, not https. We want our site to be fully secured therefor all communications need to be encrypted
 2. We are not actively monitoring the health of the pods through the data path
 
 
-First take a look at the files/5ingress/2arcadia.yaml file. It increases the number of pod to two of our services service and also defines how the http health checks will looks like.
+First take a look at the files/5ingress/2arcadia.yaml file. It increases the number of pods for our services to two - and also defines how the http health checks will looks like.  
+
 Lets apply this new configuration.
 <pre>
 Command:
