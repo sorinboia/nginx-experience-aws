@@ -50,14 +50,14 @@ This workshop creates an AWS account and a Cloud9 environment. You will need the
 [![Launch Stack](images/cfls.svg)](https://console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/new?stackName=NGINX-EKS&templateURL=https://artl-cfn-templates.s3.eu-central-1.amazonaws.com/nginx.yaml)
 
   
-Click 'Next' 3 times accepting all the defaults, but make sure the following is selected on the last screen:
+Click `Next` 3 times accepting all the defaults, but make sure the following is selected on the last screen:
 
 
 ![CFN IAM Ack](images/iam-ack.png)
 
 &nbsp;&nbsp;
 
-Click 'Create stack'.
+Click `Create stack`.
 
 6. Please wait until the stack Status is `CREATE_COMPLETE`.
 
