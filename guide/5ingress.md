@@ -101,12 +101,14 @@ spec:
           servicePort: 80
 </pre>
 
-Now apply the configuration
+Now apply the configuration.
 <details>
-  <summary>Click here for detailed instructions</summary>
+  <summary>Click here for detailed instructions.</summary>
+ 
 ```bash
 kubectl apply -f files/5ingress/arcadia-vs.yaml
   ```
+
 </details>
 
 
