@@ -49,6 +49,8 @@ backend        ClusterIP      172.20.84.9       none                            
 kubernetes     ClusterIP      172.20.0.1        none                                                                       443/TCP        108m    none   
 </pre>
 
+The application is not accessible yet. We will deploy the NGINX Ingress in the next section.  
+
 All of our pods are created based on the Nginx Unit application server.
 NGINX Unit is a dynamic application server, capable of running beside NGINX Plus and NGINX Open Source or standalone. Unit supports a RESTful JSON API, deploys configuration changes without service disruptions, and runs apps built with multiple languages and frameworks. Designed from scratch around the needs of your distributed applications, it lays the foundation for your service mesh.
 
