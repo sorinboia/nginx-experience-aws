@@ -74,7 +74,7 @@ Please note that it might take some time for the DNS names to become available.
 ##### Now we can get to the interesting part
 First we are going to expose all the application services and route traffic based on the HTTP path.
 We will start with a basic configuration.
-First create a new file (for example arcadia-vs.yaml) using the configuration bellow.  
+First create a new file (for example `arcadia-vs.yaml`) using the configuration bellow.  
 Please note: you need to replace the `host` value with the EXTERNAL-IP of the `nginx-ingress` service.
 
 <pre>
@@ -129,7 +129,7 @@ At the moment we still have two key features missing:
 2. We are not actively monitoring the health of the pods through the data path
 
 
-First take a look at the files/5ingress/2arcadia.yaml file. It increases the number of pods for our services to two - and also defines how the http health checks will looks like.  
+First take a look at the `files/5ingress/2arcadia.yaml` file. It increases the number of pods for our services to two - and also defines how the http health checks will looks like.  
 
 Lets apply this new configuration.
 <pre>
@@ -142,7 +142,7 @@ In our next step we will finish this part of the configuration, we will implemen
 - Enable health checks
 - Enable https for the application and redirect http requests to https
 
-Create ingress-arcadia.yaml to reflect the bellow and apply the configuration.
+Create `ingress-arcadia.yaml` to reflect the bellow and apply the configuration.
 <pre>
 apiVersion: v1
 kind: Secret
@@ -190,7 +190,7 @@ Now when you try to browse to the Arcadia website with http you will be automati
 Second if you look at the Nginx dashboard you can observe that Nginx has started monitoring the pods.
 
 Our next step in the application journey will be to speed up application performance and enable caching.  
-Create a new file nginx-config.yaml that reflects the bellow configuration and apply it. We are telling Nginx to create a caching entity that will be used by our Ingress.
+Create a new file `nginx-config.yaml` that reflects the bellow configuration and apply it. We are telling Nginx to create a caching entity that will be used by our Ingress.
 <pre>
 kind: ConfigMap
 apiVersion: v1
@@ -216,7 +216,7 @@ kubectl apply -f files/5ingress/nginx-config.yaml
 
 
 Next we will tell our Nginx Ingress to start using it and start caching.  
-Create a new file nginx-ingress-update.yaml with the configuration below and apply it.  
+Create a new file `nginx-ingress-update.yaml` with the configuration below and apply it.  
 
 <pre>
 apiVersion: extensions/v1beta1
