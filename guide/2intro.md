@@ -59,7 +59,7 @@ Click `Next` 3 times accepting all the defaults, but make sure the following is 
 
 Click `Create stack`.
 
-6. Please wait until the stack Status is `CREATE_COMPLETE`.
+6. Please wait until the `NGINX-EKS` stack Status is `CREATE_COMPLETE`.
 
 ## IAM Role
 
