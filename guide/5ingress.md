@@ -145,8 +145,8 @@ In our next step we will finish this part of the configuration, we will implemen
 - Enable health checks
 - Enable https for the application and redirect http requests to https
 
-Create `ingress-arcadia.yaml` to reflect the bellow and apply the configuration.
-Please note: you need to replace the `host` value with the EXTERNAL-IP of the `nginx-ingress` service.  
+Create `ingress-arcadia.yaml` to reflect the bellow and apply the configuration.  
+:warning: Please note: you need to replace the `host` value with the EXTERNAL-IP of the `nginx-ingress` service.  
 
 <pre>
 apiVersion: v1
