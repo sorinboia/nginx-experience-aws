@@ -11,7 +11,7 @@ Nginx Kubernetes Ingress to save the day! :)
 ##### Lets start with the Nginx deployment.
 We are going to use the Nginx installation manifests based on the [Nginx Ingress Controller installation guide](https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/).
 For simplicity - we have already prepared the installation in a single yaml file.  
-Simply run the command bellow.  
+1. Simply run the command bellow:  
 
 <pre>
 Command:
@@ -28,7 +28,7 @@ deployment.apps/nginx-ingress created
 service/nginx-ingress created
 </pre>
   
-Next we need to run the following in order to expose the Nginx Ingress Dashboard (copy and paste in the command line the bellow).
+2. Next we need to run the following in order to expose the Nginx Ingress Dashboard (copy and paste in the command line the bellow).
 <pre>
 cat << EOF | kubectl apply -f -
 apiVersion: v1
