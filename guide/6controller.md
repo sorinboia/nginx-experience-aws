@@ -6,17 +6,22 @@ We will acomplish this using two components:
 - Nginx Container will be the API Microgateway which will reside within the Kubernetes environment
 
 
-The Nginx Controller has already been deployed with the terraform declaration, we need to find the public IP address.
-> cd terraform
+1. The Nginx Controller has already been deployed with the terraform declaration, we need to find the public IP address.
+
 <pre>
 Command:
+cd terraform
 terraform state show "aws_instance.controller" | grep "public_ip"
 
 Output:
     associate_public_ip_address  = true
     public_ip                    = "18.184.134.91"
 </pre>
-> cd ..
+
+2. Change the directory back to the original repo folder:
+```
+cd ..
+```
 
 Https browse to the IP address of the Controller.
 > username: s@s.com  
