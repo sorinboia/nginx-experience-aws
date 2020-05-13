@@ -131,11 +131,14 @@ At the moment we still have two key features missing:
 
 First take a look at the `files/5ingress/2arcadia.yaml` file. It increases the number of pods for our services to two - and also defines how the http health checks will looks like.  
 
-Lets apply this new configuration.
+Let's apply this new configuration.
+<details>
+  <summary>Click here for detailed instructions.</summary>
 <pre>
 Command:
 kubectl apply -f files/5ingress/2arcadia.yaml
 </pre>
+</details>
 
 If you look at the Nginx dashboard you can see that right now that two HTTP upstreams have 2 members but no health checks are being done.  
 In our next step we will finish this part of the configuration, we will implement the following:  
