@@ -230,7 +230,7 @@ kubectl apply -f files/5ingress/nginx-config.yaml
 
 Next we will tell our Nginx Ingress to start using it and start caching.  
 Create a new file `nginx-ingress-update.yaml` with the configuration below and apply it.  
-Please note: you need to replace the `host` value with the EXTERNAL-IP of the `nginx-ingress` service.  
+:warning: Please note: you need to replace the `host` value with the EXTERNAL-IP of the `nginx-ingress` service.  
 
 
 <pre>
