@@ -75,7 +75,7 @@ Browse to the following location and verify that you receive a 404 status code: 
 First we are going to expose all the application services and route traffic based on the HTTP path.
 We will start with a basic configuration.
 First create a new file (for example `arcadia-vs.yaml`) using the configuration bellow.  
-Please note: you need to replace the `host` value with the EXTERNAL-IP of the `nginx-ingress` service.
+:warning: Please note: you need to replace the `host` value with the EXTERNAL-IP of the `nginx-ingress` service.
 
 <pre>
 apiVersion: extensions/v1beta1
