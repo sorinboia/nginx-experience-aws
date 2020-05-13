@@ -34,7 +34,7 @@ Open Tracing tracing is becoming more and more important because software system
 ##### MTLS with the Nginx Controller
 
 Enabling MTLS on our Nginx Ingress Controller is quite simple, we are going to add two lines to the existing config.
-Please update the `nginx-ingress-update.yaml` file with the following config:  
+1. Please update the `nginx-ingress-update.yaml` file with the following config:  
 
 > ssl_client_certificate /etc/ssl/mycerts/ca.pem;  
 > ssl_verify_client on;
@@ -84,17 +84,20 @@ spec:
           servicePort: 80
 </pre>
   
-Browse to the Arcadia site again, and you'll see that you can't access it since you don't have the client certificate.  
+:warning: Please note: you need to replace the `host` value with the EXTERNAL-IP of the `nginx-ingress` service.
+
+2. Browse to the Arcadia site again, and you'll see that you can't access it since you don't have the client certificate.  
   
   
-In order to verify this is actually working run the bellow command, it will use the client cert/key pair on the Cloud9 instance to authenticate:
+3. In order to verify this is actually working run the bellow command, it will use the client cert/key pair on the Cloud9 instance to authenticate:
 
 
 > curl -v -k --key certs_for_mtls/01-alice.key --cert certs_for_mtls/01-alice.pem https://`<INGRESS-EXTERNAL-IP>`/
 
 
-We are finished with this part of our experiance and achieved the bellow environment.  
+4. We are finished with this part of our experiance and achieved the bellow environment.  
 Also before moving forward reapply the ingress configuration without the two lines we just added.
+:warning: Please note: you need to replace the `host` value with the EXTERNAL-IP of the `nginx-ingress` service.
 
 <pre>
 apiVersion: extensions/v1beta1
