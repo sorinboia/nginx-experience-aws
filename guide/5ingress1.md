@@ -91,8 +91,13 @@ spec:
   
 3. In order to verify this is actually working run the bellow command, it will use the client cert/key pair on the Cloud9 instance to authenticate:
 
-
-> curl -v -k --key certs_for_mtls/01-alice.key --cert certs_for_mtls/01-alice.pem https://`<INGRESS-EXTERNAL-IP>`/
+```
+curl -v -k \
+    --key certs_for_mtls/01-alice.key \
+    --cert certs_for_mtls/01-alice.pem \
+    https://<INGRESS-EXTERNAL-IP>/ \
+    | grep 'Welcome'
+```
 
 
 4. We are finished with this part of our experiance and achieved the bellow environment.  
