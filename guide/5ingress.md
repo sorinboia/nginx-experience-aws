@@ -291,4 +291,4 @@ kubectl apply -f files/5ingress/nginx-ingress-update.yaml
 If the response was taken from the cache it will have a value of "HIT" otherwise if it was server by the server the value will be "MISS"
 - The second options is to look at the Nginx Dashboard -> Caches and observe the HIT ration and traffic served
 
-#### [Second part](5ingress1.md)  
+#### [Next part](5ingress1.md)  
