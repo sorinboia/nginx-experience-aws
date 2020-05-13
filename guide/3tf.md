@@ -34,7 +34,6 @@ Once Terraform is done, we need to verify the deployment is working as expected 
 
 4. We need to save the remote access config for the Kubernetes cluster locally:  
 <pre>
-Command:
 mkdir ~/.kube/ 
 terraform output > ~/.kube/config
 </pre>
