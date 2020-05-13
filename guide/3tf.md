@@ -15,7 +15,7 @@ terraform plan
 </pre>
 
 
-3. Now lets deploy the environment
+3. Now let's deploy the environment
 <pre>
 terraform apply --auto-approve
 </pre>
