@@ -8,7 +8,7 @@ We need to be able to route the requests to the relevant service.
 Nginx Kubernetes Ingress to save the day! :)
 
  
-##### Lets start with the Nginx deployment.
+##### Let's start with the Nginx deployment.
 We are going to use the Nginx installation manifests based on the [Nginx Ingress Controller installation guide](https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/).
 For simplicity - we have already prepared the installation in a single yaml file.  
 1. Simply run the command bellow:  
@@ -50,7 +50,7 @@ spec:
 EOF
 </pre>
 
-Lets check what we did so far is actually working. Run the following command:
+3. Let's check what we did so far is actually working. Run the following command:
 
 <pre>
 Command:
@@ -73,8 +73,9 @@ Browse to the following location and verify that you receive a 404 status code: 
 
 ##### Now we can get to the interesting part
 First we are going to expose all the application services and route traffic based on the HTTP path.
-We will start with a basic configuration.
-First create a new file (for example `arcadia-vs.yaml`) using the configuration bellow.  
+We will start with a basic configuration.  
+
+4. First create a new file (for example `arcadia-vs.yaml`) using the configuration bellow.  
 :warning: Please note: you need to replace the `host` value with the EXTERNAL-IP of the `nginx-ingress` service.
 
 <pre>
@@ -103,7 +104,7 @@ spec:
 
 Note how the various HTTP paths (`/, /api/, /app3/`) are routed by Ingress to the relevant K8s services.  
 
-Now apply the configuration.
+5. Now apply the configuration.
 <details>
   <summary>Click here for detailed instructions.</summary>
  
@@ -114,10 +115,11 @@ kubectl apply -f files/5ingress/arcadia-vs.yaml
 </details>
 
 
-At this stage the basic install is finished and all that's left is to check the connectivity to the Arcadia web application, get the public hostname of the exposed `nginx-ingress` service.  
-Browse to the following location and verify that you can access the site: http://`<INGRESS-EXTERNAL-IP>`/  
+At this stage the basic install is finished and all that's left is to check the connectivity to the Arcadia web application. Get the public hostname of the exposed `nginx-ingress` service.  
 
-Login to the application using the following credentials:
+6. Browse to the following location and verify that you can access the site: http://`<INGRESS-EXTERNAL-IP>`/  
+
+7. Login to the application using the following credentials:
 
 ```
 Username: admin
@@ -125,8 +127,8 @@ Password: iloveblue
 ```
 
 At the moment we still have two key features missing:
-1. We are serving only http, not https. We want our site to be fully secured therefor all communications need to be encrypted
-2. We are not actively monitoring the health of the pods through the data path
+- We are serving only http, not https. We want our site to be fully secured therefor all communications need to be encrypted
+- We are not actively monitoring the health of the pods through the data path
 
 
 First take a look at the `files/5ingress/2arcadia.yaml` file. It increases the number of pods for our services to two - and also defines how the http health checks will looks like.  
