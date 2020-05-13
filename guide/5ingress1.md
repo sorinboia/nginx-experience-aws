@@ -101,7 +101,8 @@ curl -v -k \
 
 
 4. We are finished with this part of our experiance and achieved the bellow environment.  
-Also before moving forward reapply the ingress configuration without the two lines we just added.
+Also before moving forward reapply the ingress configuration without the two lines we just added.  
+
 :warning: Please note: you need to replace the `host` value with the EXTERNAL-IP of the `nginx-ingress` service.
 
 <pre>
