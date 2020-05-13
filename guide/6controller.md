@@ -29,6 +29,7 @@ One you login the first thing you will see is the API key, save it for later.
 
 
 Now lets deploy the microgateway with the following configuration and don't forget to replace the IP address and API key of the controller:
+Please note: you need to replace the IP address and API key value of the controller in the bellow yaml.
 <pre>
 apiVersion: apps/v1
 kind: Deployment
