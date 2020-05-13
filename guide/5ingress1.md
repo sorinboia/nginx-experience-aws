@@ -84,7 +84,7 @@ spec:
 
 Right now browse to again to Arcadia and you will see that you can't access the site since you don't have the client certificate.  
 In order to verify that this is actually working run the bellow command, it will use client cert/key pair in our to authenticate.
-> curl -v -k --key certs_for_mtls/01-alice.key --cert certs_for_mtls/01-alice.pem https://<MUST BE REPLACED WITH "EXTERNAL-IP" OF THE "nginx-ingress" SERVICE>/
+> curl -v -k --key certs_for_mtls/01-alice.key --cert certs_for_mtls/01-alice.pem https://`<INGRESS-EXTERNAL-IP>`/
 
 
 We are finished with this part of our experiance and achieved the bellow environment.  
