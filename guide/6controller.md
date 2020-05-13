@@ -138,11 +138,13 @@ Click "Submit".
 > Environment: prod  
 > Instance Refs: Select All  
 > Hostname: https://<EXTERNAL-IP OF THE "microgateway" SERVICE>  
-> Cert Reference: server-cert
+> Cert Reference: server-cert  
+> Submit
 
 ##### "N" -> "Services" -> "Apps" -> "Create App"
 > Name: arcadia-api   
 > Environment: prod  
+> Submit
 
 
 So far we have created an environment, uploaded the certificate/key that we will use gor our https connection, created a gateway which represent our entry point within the API gateway and last defined a new application object.  
