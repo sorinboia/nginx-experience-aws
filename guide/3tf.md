@@ -48,7 +48,9 @@ NAME                                          STATUS   ROLES    AGE   VERSION
 ip-10-0-2-32.eu-central-1.compute.internal    Ready     none    84s   v1.15.10-eks-bac369  
 ip-10-0-3-217.eu-central-1.compute.internal   Ready     none    88s   v1.15.10-eks-bac369  
 </pre>
-<pre>
+<pre>  
+
+And the `kube-system` pods (this is the namespace for objects created by the Kubernetes system):  
 Command:
 kubectl get pods -n kube-system
 
