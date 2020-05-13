@@ -130,7 +130,8 @@ Click "Submit".
 > Environment: prod  
 > Chose "Copy and paste PEM text"  
 > Private Key: Browse to https://raw.githubusercontent.com/sorinboia/nginx-experience-aws/master/certs_for_mtls/ca.key copy and paste.  
-> Public Cert: Browse to https://raw.githubusercontent.com/sorinboia/nginx-experience-aws/master/certs_for_mtls/ca.pem copy and paste.
+> Public Cert: Browse to https://raw.githubusercontent.com/sorinboia/nginx-experience-aws/master/certs_for_mtls/ca.pem copy and paste.  
+< Submit
 
 
 ##### "N" -> "Services" -> "Gateways" -> "Create Gateway"
