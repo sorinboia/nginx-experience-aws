@@ -5,19 +5,16 @@ First we will start by using Terraform to deploy the initial infrastructure whic
 Go to the "terraform" directory where we can find the terraform plan.
 
 <pre>
-Command:
 cd terraform
 </pre>
 
 Run the following commands, terraform plan will show us what it is going to be deployed in AWS by Terraform:
 <pre>
-Command:
 terraform init
 terraform plan
 </pre>
 Now lets deploy the environment
 <pre>
-Command:
 terraform apply --auto-approve
 </pre>
 
