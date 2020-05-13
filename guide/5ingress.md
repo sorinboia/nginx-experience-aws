@@ -68,7 +68,7 @@ Browse to the following location and verify that you can see the dashboard: http
 Note the EXTERNAL-IP of the "nginx-ingress". This is the hostname that we are going to use in order to publish the Arcadia web application.  
 Browse to the following location and verify that you receive a 404 status code: http://`<INGRESS-EXTERNAL-IP>`/  
 
-Please note that it might take some time for the DNS names to become available.
+:warning: Please note that it might take some time for the DNS names to become available.
 
 
 ##### Now we can get to the interesting part
