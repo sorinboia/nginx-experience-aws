@@ -33,13 +33,15 @@ Open Tracing tracing is becoming more and more important because software system
 
 ##### MTLS with the Nginx Controller
 
-Enabling MTLS on our Nginx Ingress Controller is quite simple, we are going to add two lines to the existing config:
+Enabling MTLS on our Nginx Ingress Controller is quite simple, we are going to add two lines to the existing config.
+Please update the `nginx-ingress-update.yaml` file with the following config:  
+
 > ssl_client_certificate /etc/ssl/mycerts/ca.pem;  
 > ssl_verify_client on;
 
 This will enable MTLS while using the pre uploaded ca.pem certificate.
 
-Apply this new ingress configuration:
+Update Ingress by applying the new configuration, which should now look like this:
 <pre>
 apiVersion: extensions/v1beta1
 kind: Ingress
