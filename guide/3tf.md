@@ -32,14 +32,14 @@ Amazon EKS lets you create, update, or terminate worker nodes for your cluster w
 
 Once Terraform is done, we need to verify the deployment is working as expected and we are able to control the Kubernetes environment.
 
-We need to save the remote access config for the Kubernetes cluster locally:  
+4. We need to save the remote access config for the Kubernetes cluster locally:  
 <pre>
 Command:
 mkdir ~/.kube/ 
 terraform output > ~/.kube/config
 </pre>
 
-Let do a quick check and see that our cluster is up an running.  
+5. Let's do a quick check and see that our cluster is up an running.  
 Below we should see our two K8s worker nodes:
 <pre>
 Command:
@@ -70,7 +70,7 @@ At the moment we have our setup deployed as it can be seen in the bellow diagram
 
 ![](images/3env.JPG)
 
-Change the directory back to the original repo folder:
+6. Change the directory back to the original repo folder:
 ```
 cd ..
 ```
