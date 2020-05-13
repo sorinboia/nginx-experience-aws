@@ -83,9 +83,13 @@ spec:
           serviceName: arcadia-app3
           servicePort: 80
 </pre>
+  
+Browse to the Arcadia site again, and you'll see that you can't access it since you don't have the client certificate.  
+  
+  
+In order to verify this is actually working run the bellow command, it will use the client cert/key pair on the Cloud9 instance to authenticate:
 
-Right now browse to again to Arcadia and you will see that you can't access the site since you don't have the client certificate.  
-In order to verify that this is actually working run the bellow command, it will use client cert/key pair in our to authenticate.
+
 > curl -v -k --key certs_for_mtls/01-alice.key --cert certs_for_mtls/01-alice.pem https://`<INGRESS-EXTERNAL-IP>`/
 
 
