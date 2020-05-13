@@ -7,7 +7,7 @@ As stated before these are the 4 microservices which we will deploy.
 - App2 - provides money transfer API based functionalities for both the Web app and third party consumer applications
 - App3 - provides referral API based functionalities for both the Web app and third party consumer applications
 
-Let deploy the app
+1. Let's deploy the app
 <pre>
 Command:
 kubectl apply -f files/5ingress/1arcadia.yaml
@@ -23,7 +23,7 @@ service/arcadia-app2 created
 service/arcadia-app3 created  
 </pre>
 
-Let check that all is deployed and working as expected:  
+2. Let's check that all is deployed and working as expected:  
 <pre>
 Command:
 kubectl get pods
