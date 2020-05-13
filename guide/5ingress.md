@@ -191,6 +191,14 @@ spec:
           servicePort: 80
 </pre>
 
+<details>
+  <summary>Click here for detailed instructions.</summary>
+<pre>
+Command:
+kubectl apply -f files/5ingress/ingress-arcadia.yaml
+</pre>
+</details>
+
 Now when you try to browse to the Arcadia website with http you will be automatically redirected to https.  
 Second if you look at the Nginx dashboard you can observe that Nginx has started monitoring the pods.
 
