@@ -2,18 +2,20 @@
 
 First we will start by using Terraform to deploy the initial infrastructure which includes the Amazon Elastic Kubernetes Service and the EC2 instance for the Nginx Controller.
 
-Go to the "terraform" directory where we can find the terraform plan.
+1. Go to the "terraform" directory where we can find the terraform plan.
 
 <pre>
 cd terraform
 </pre>
 
-Run the following commands, terraform plan will show us what it is going to be deployed in AWS by Terraform:
+2. Run the following commands, terraform plan will show us what it is going to be deployed in AWS by Terraform:
 <pre>
 terraform init
 terraform plan
 </pre>
-Now lets deploy the environment
+
+
+3. Now lets deploy the environment
 <pre>
 terraform apply --auto-approve
 </pre>
