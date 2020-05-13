@@ -127,13 +127,13 @@ Password: iloveblue
 ```
 
 At the moment we still have two key features missing:
-- We are serving only http, not https. We want our site to be fully secured therefor all communications need to be encrypted
+- We are serving only http, not https. We want our site to be fully secured therefore all communications need to be encrypted
 - We are not actively monitoring the health of the pods through the data path
 
 
-First take a look at the `files/5ingress/2arcadia.yaml` file. It increases the number of pods for our services to two - and also defines how the http health checks will looks like.  
+8. First take a look at the `files/5ingress/2arcadia.yaml` file. It increases the number of pods for our services to two - and also defines how the http health checks will looks like.  
 
-Let's apply this new configuration.
+9. Let's apply this new configuration.
 <details>
   <summary>Click here for detailed instructions.</summary>
 <pre>
@@ -142,12 +142,12 @@ kubectl apply -f files/5ingress/2arcadia.yaml
 </pre>
 </details>
 
-If you look at the Nginx dashboard you can see that right now that two HTTP upstreams have 2 members but no health checks are being done.  
+10. If you look at the Nginx dashboard you can see that right now that two HTTP upstreams have 2 members but no health checks are being done.  
 In our next step we will finish this part of the configuration, we will implement the following:  
 - Enable health checks
 - Enable https for the application and redirect http requests to https
 
-Create `ingress-arcadia.yaml` to reflect the bellow and apply the configuration.  
+11. Create `ingress-arcadia.yaml` to reflect the bellow and apply the configuration.  
 :warning: Please note: you need to replace the `host` value with the EXTERNAL-IP of the `nginx-ingress` service.  
 
 <pre>
@@ -201,11 +201,13 @@ kubectl apply -f files/5ingress/ingress-arcadia.yaml
 </pre>
 </details>
 
-Now when you try to browse to the Arcadia website with http you will be automatically redirected to https.  
-Second if you look at the Nginx dashboard you can observe that Nginx has started monitoring the pods.
+12. Now when you try to browse to the Arcadia website with http you will be automatically redirected to https.  
+Also, if you look at the Nginx dashboard you can observe that Nginx has started monitoring the pods.
 
-Our next step in the application journey will be to speed up application performance and enable caching.  
-Create a new file `nginx-config.yaml` that reflects the bellow configuration and apply it. We are telling Nginx to create a caching entity that will be used by our Ingress.
+Our next step in the application journey will be to speed up application performance and enable caching. 
+
+13. Create a new file `nginx-config.yaml` that reflects the bellow configuration and apply it. We are telling Nginx to create a caching entity that will be used by our Ingress.  
+
 <pre>
 kind: ConfigMap
 apiVersion: v1
@@ -231,7 +233,8 @@ kubectl apply -f files/5ingress/nginx-config.yaml
 
 
 Next we will tell our Nginx Ingress to start using it and start caching.  
-Create a new file `nginx-ingress-update.yaml` with the configuration below and apply it.  
+
+14. Create a new file `nginx-ingress-update.yaml` with the configuration below and apply it.  
 :warning: Please note: you need to replace the `host` value with the EXTERNAL-IP of the `nginx-ingress` service.  
 
 
@@ -283,7 +286,7 @@ kubectl apply -f files/5ingress/nginx-ingress-update.yaml
 </details>
 
 
-We have two simple indicators to check that all is working:  
+15. We have two simple indicators to check that all is working:  
 - First if we open the browser developer tools we can see a new http header in the response called "X-Cache-Status".  
 If the response was taken from the cache it will have a value of "HIT" otherwise if it was server by the server the value will be "MISS"
 - The second options is to look at the Nginx Dashboard -> Caches and observe the HIT ration and traffic served
