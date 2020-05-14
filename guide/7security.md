@@ -136,7 +136,7 @@ Now, all of our services are protected and monitored.
 
 7. Let's simulate a Cross Site Scripting (XSS) attack, and make sure it's blocked:  
 
-> https://<INGRESS-EXTERNAL-IP>/trading/index.php?a=%3Cscript%3Ealert(%27xss%27)%3C/script%3E
+`https://<INGRESS-EXTERNAL-IP>/trading/index.php?a=%3Cscript%3Ealert(%27xss%27)%3C/script%3E`
 
 Each of the blocked requests will generate a support ID, save it for later.  
 
