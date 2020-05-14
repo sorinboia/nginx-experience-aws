@@ -101,7 +101,8 @@ spec:
 From now on we will only use the Controller GUI do to all of our configuration.  
 The end goal will be to expose and protect our APIs both internally within the cluster and externally to other programmers.  
 
-6. Login to the Nginx Controller web UI, click the "N" button in the upper left corner and go to `Infrastructure` > `Instances`. 
+6. Login to the Nginx Controller web UI, click the "N" button in the upper left corner and go to `Infrastructure` > `Instances`.  
+
 You will see the microgateway we just deployed listed. If it is not there wait for about 2 minutes, it might take a little bit of time for the instance to register.
 
 7. Lets get the EXTERNAL-IP of the microgateway service we just published, we will use it later on within our config.
