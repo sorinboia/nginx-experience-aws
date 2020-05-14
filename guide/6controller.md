@@ -332,7 +332,7 @@ Copy the key that was just created and save it for later.
 
 25. Authentication Policy:
 
-###### "N" -> "Services" -> "APIs" -> "API Definitions" -> "Pen" icon next to "arcadia-pub-api"
+##### "N" -> "Services" -> "APIs" -> "API Definitions" -> "Pen" icon next to "arcadia-pub-api"
 
 > Add a policy  
 > Policy Type: Authentication  
@@ -342,8 +342,9 @@ Copy the key that was just created and save it for later.
 
 Save then Publish.
 
-Now in order to check that all is working as expected we will do the following:
-We will run the preview curl command and we will recevie a 401 status code.
+Now in order to check that all is working as expected, we will do the following:
+
+26. Run the previous curl command. You should recevie a 401 status code:
 
 <pre>
 curl -k --location --request POST 'https://[EXTERNAL-IP OF THE "microgateway" service]/api/rest/execute_money_transfer.php' --header 'Content-Type: application/json' --data-raw '{"amount":"77","account":"2075894","currency":"EUR","friend":"Alfredo"}'
