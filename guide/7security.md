@@ -130,13 +130,17 @@ kubectl apply -f files/7waf/arcadia-app3.yaml
 kubectl apply -f files/7waf/arcadia-backend.yaml
 </pre>
 
-Right now all of our services are monitored and protected.  
-First browse again to the Arcadia web app and verify that it is still working.  
-After that lets do an attack and verify that it is blocked by doing a Cross Site Scripting attack. Do a few of these requests
-> https://<YOUR IP/HOSTNAME>/trading/index.php?a=%3Cscript%3Ealert(%27xss%27)%3C/script%3E
+Now, all of our services are protected and monitored.
 
-On each of the blocked requests you have received a support ID, save it for later.  
-Browse to ELK as before and click the "Discover" button:  
+6. Browse again to the Arcadia web app and verify that it is still working.  
+
+7. Let's simulate a Cross Site Scripting (XSS) attack, and make sure it's blocked:  
+
+> https://<INGRESS-EXTERNAL-IP>/trading/index.php?a=%3Cscript%3Ealert(%27xss%27)%3C/script%3E
+
+Each of the blocked requests will generate a support ID, save it for later.  
+
+8. Browse to the ELK as before and click the "Discover" button:  
 
 ![](images/kibana1.JPG)  
 
