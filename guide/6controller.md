@@ -36,8 +36,11 @@ Once you login - the first thing you will see is the API key, save it for later.
 ![](images/controller_apikey.JPG)
 
 
-Now lets deploy the microgateway with the following configuration and don't forget to replace the IP address and API key of the controller:
-Please note: you need to replace the IP address and API key value of the controller in the bellow yaml.
+5. Now let's deploy the microgateway with the following configuration.  
+
+:warning: Please note: you need to replace the IP address of the controller and the API key value you saved in the previous step.
+Create a new file `microgw.yaml`:
+
 <pre>
 apiVersion: apps/v1
 kind: Deployment
@@ -60,9 +63,9 @@ spec:
           imagePullPolicy: Always
           env:
             - name: API_KEY
-              value: REPLACE WITH THE API KEY
+              value: <REPLACE WITH THE API KEY>
             - name: CTRL_HOST
-              value: REPLACE WITH CONTROLLER IP ADDRESS
+              value: <REPLACE WITH CONTROLLER IP ADDRESS>
             - name: HOSTNAME
               value: microgateway1            
           ports:
