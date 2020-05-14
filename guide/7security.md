@@ -8,7 +8,7 @@ In our scenario, since we decided our Nginx WAF to be enabled on a per-pod basis
 We'll be able to bring security closer to the application and the development cycle and integrate it into CI/CD pipelines.  
 This will allow to minimize false positives, since the WAF policy becomes a part of the application and is always tested as such.  
 
-1. First, we will start by applying the Nginx WAF config, which can be found in the "files/7waf/waf-config.yaml" file.  
+1. Create the Nginx WAF config, which can be found in the "files/7waf/waf-config.yaml" file.  
 
 <pre>
 Command:
