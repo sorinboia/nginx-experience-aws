@@ -15,7 +15,7 @@ Command:
 kubectl apply -f files/7waf/waf-config.yaml
 </pre>
 
-The Waf policy is json based and from the example bellow you can observe how all the configuration can be changed per application needs.
+The WAF policy is json based and from the example bellow you can observe how all the configuration can be changed based on the application needs:  
 <pre>
     {
       "name": "nginx-policy",
