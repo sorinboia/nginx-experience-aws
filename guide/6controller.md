@@ -178,7 +178,7 @@ Next we are going to publish the application APIs to the world.
 There are two ways of creating this configuration, the first one is manual similar to the way we performed the configuration until this point and the second one is described bellow.  
 
 
-As part of their development cycle, the developers of the Arcadia application are generating an [OpenApi](https://swagger.io/docs/specification/about/) specification do describe their APIs.  
+As part of their development cycle, the developers of the Arcadia application are generating an [OpenApi](https://swagger.io/docs/specification/about/) specification to describe their APIs.  
 We are going to use this API specification in order to publish the services to the world.
 
 12. Run the following curl commands.  
@@ -192,10 +192,13 @@ curl -k -b cookie.txt -c cookie.txt --location --request PUT 'https://[CHANGE TO
 </pre>
 
 We have just uploaded the OpenApi spec to the Nginx Controller.  
-Go to "N" -> "APIs" -> "API Definitions". You can see listed the "Arcadia API" definition.  
-Click the "Pen" icon of the "Arcadia API" and you can see a list of the defined APIs endpoints.  
+
+13. Go to "N" -> "Services" -> "APIs" -> "API Definitions".  
+You can see the "Arcadia API" definition listed.  
+
+14. Click the "Pen" icon of the "Arcadia API" and you can see a list of the defined API endpoints.  
  
- Now we are going to check the DNS name of the backend servers we need to point to:
+15. Now we are going to check the DNS name of the backend servers we need to point our APIs to:
  <pre>
  Command:
  kubectl get svc
