@@ -154,7 +154,7 @@ Click "Submit".
 10. Create the Gateway:  
 
 ##### "N" -> "Services" -> "Gateways" -> "Create Gateway"
-> Name: api.arcadia.aws.cloud
+> Name: api.arcadia.aws.cloud  
 > Environment: prod  
 > Instance Refs: Select All  
 > Hostname: https://<EXTERNAL-IP OF THE "microgateway" SERVICE>  
