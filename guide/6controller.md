@@ -250,12 +250,15 @@ After adding each route click Save.
 When done click "Publish".  
 
 
+Once the public API has been published - we need to take similar steps for the internal APIs that are accessing the Arcadia Backend service.  
 
-Once the public API has been published we need to take the same procedure and do the same for the internal APIs that are accessing the Arcadia Backend service.  
+18. Create the Environment:
 
 ##### "N" -> "Services" -> "Environments" -> "Create Environment"  
 > Name: internal  
 > Tags: internal
+
+19. Create the Gateway:
 
 ##### "N" -> "Services" -> "Gateways" -> "Create Gateway"
 > Name: backend   
@@ -263,12 +266,12 @@ Once the public API has been published we need to take the same procedure and do
 > Instance Refs: Select All  
 > Hostname: http://backend  
 
-
+20. Create the App:
 ##### "N" -> "Services" -> "Apps" -> "Create App"
 > Name: arcadia-backend   
 > Environment: internal
 
-We could continue and import the OpenApi spec of the backend service as before but now we want to present the load balancing configuration when developers don't have the spec at hand.
+21. We could continue and import the OpenApi spec of the backend service as before, but now we want to present the load balancing configuration when developers don't have the specs at hand.
 
 ##### "N" -> "Services" -> "Apps" -> "arcadia-backend" -> "Create Component"  
 > Name: backend-component  
@@ -279,8 +282,9 @@ We could continue and import the OpenApi spec of the backend service as before b
 > Workload Group Name: arcadia-backend    
 > URI: http://arcadia-backend  
 
-Now we just need to tell kubernetes to point to the microgateway instead of directly to the pods.
+22. Now we just need to tell kubernetes to point to the microgateway instead of directly to the pods.
 <pre>
+cat << EOF | kubectl apply -f -
 apiVersion: v1
 kind: Service
 metadata:
@@ -294,6 +298,7 @@ spec:
     protocol: TCP
   selector:
     app: microgateway
+EOF
 </pre>
 
 
