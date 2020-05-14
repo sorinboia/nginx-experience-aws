@@ -13,6 +13,6 @@ kubectl delete --all svc --namespace=default
 kubectl delete --all svc --namespace=nginx-ingress
 cd terraform
 terraform destroy
-aws cloudformation delete-stack --stack-name NGINX-EKS --region eu-central-1
 ```
 
+Finally, delete the `NGINX-EKS` stack in the [CloudFormation console](https://eu-central-1.console.aws.amazon.com/cloudformation/home?region=eu-central-1#/).
