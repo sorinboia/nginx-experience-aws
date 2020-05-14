@@ -320,12 +320,13 @@ All looks good but we are not done, we should add some security to our API and e
 > Name: api-protect  
 > Environment: prod  
 > Type: API Key
+
 Create.  
 
 > + Create a client  
 > Name: test  
 
-Save
+Save.  
 
 Copy the key that was just create and save it for later.
 
