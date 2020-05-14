@@ -24,8 +24,8 @@ cd ..
 ```
 
 Https browse to the IP address of the Controller.
-> username: s@s.com  
-> password: sorin2019
+> username: nginx@f5.com  
+> password: Admin2020
 
 Next step is to get the API key to connect the microgateway so it is managed by the controller.
 One you login the first thing you will see is the API key, save it for later.
@@ -161,7 +161,7 @@ We are going to use this API specification in order to publish the services to t
 WE will run the following curl commands and don't forget to change the controller IP address.
 <pre>
 Commands:
-curl -k -c cookie.txt -X POST --url "https://[CHANGE TO CONTROLLER IP ADDRESS]/api/v1/platform/login" --header 'Content-Type: application/json' --data '{"credentials": {"type": "BASIC","username": "s@s.com","password": "sorin2019"}}'  
+curl -k -c cookie.txt -X POST --url "https://[CHANGE TO CONTROLLER IP ADDRESS]/api/v1/platform/login" --header 'Content-Type: application/json' --data '{"credentials": {"type": "BASIC","username": "nginx@f5.com","password": "Admin2020"}}'  
 curl -k -b cookie.txt -c cookie.txt --location --request PUT 'https://[CHANGE TO CONTROLLER IP ADDRESS]/api/v1/services/api-definitions/arcadia-api/oas-config' --header 'Content-Type: application/json' --header 'Content-Type: text/plain' --data "@files/6controller/arcadia_api_spec.json"
 </pre>
 
