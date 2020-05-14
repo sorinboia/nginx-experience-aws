@@ -310,18 +310,22 @@ Run the bellow curl command.
 Command:
 curl -k --location --request POST 'https://[EXTERNAL-IP OF THE "microgateway" service]/api/rest/execute_money_transfer.php' --header 'Content-Type: application/json' --data-raw '{"amount":"77","account":"2075894","currency":"EUR","friend":"Alfredo"}'
 </pre>
-You should receive a success message and if you go to the main application and refresh the page you will be able to see the transaction we just did in the "Transfer History" location.
+You should receive a success message and if you go to the main Arcadia application and refresh the page you will be able to see the transaction we just did in the "Transfer History" section.
 
 All looks good but we are not done, we should add some security to our API and enable access with access keys.
+
+24. Create an Identity Provider:
 
 ##### "N" -> "Services" -> "APIs" -> "Identity Provider" -> "Create an Identity Provider"
 > Name: api-protect  
 > Environment: prod  
 > Type: API Key
-> Create  
-> Create a client  
+Create.  
+
+> + Create a client  
 > Name: test  
-> Save
+
+Save
 
 Copy the key that was just create and save it for later.
 
