@@ -154,7 +154,7 @@ Click "Submit".
 10. Create the Gateway:  
 
 ##### "N" -> "Services" -> "Gateways" -> "Create Gateway"
-> Name: api.arcadia.sorinb.cloud   
+> Name: api.arcadia.aws.cloud
 > Environment: prod  
 > Instance Refs: Select All  
 > Hostname: https://<EXTERNAL-IP OF THE "microgateway" SERVICE>  
@@ -169,13 +169,18 @@ Click "Submit".
 > Environment: prod  
 > Submit
 
-
-So far we have created an environment, uploaded the certificate/key that we will use gor our https connection, created a gateway which represent our entry point within the API gateway and last defined a new application object.  
+  
+  
+So far we have created an environment, uploaded the certificate/key that we will use for our HTTPS connection, created a gateway which represents our entry point to the API gateway and last defined a new application object.  
+  
+  
 Next we are going to publish the application APIs to the world, there are two ways of creating this configuration, the first one is manual similar to the way we performed the configuration until this point and the second one is described bellow.  
+
+
 The developers of the Arcadia application as part of their development cycle are generating an [OpenApi](https://swagger.io/docs/specification/about/) specification do describe their APIs.  
 We are going to use this API specification in order to publish the services to the world.
 
-WE will run the following curl commands and don't forget to change the controller IP address.
+12. WE will run the following curl commands and don't forget to change the controller IP address.
 <pre>
 Commands:
 curl -k -c cookie.txt -X POST --url "https://[CHANGE TO CONTROLLER IP ADDRESS]/api/v1/platform/login" --header 'Content-Type: application/json' --data '{"credentials": {"type": "BASIC","username": "nginx@f5.com","password": "Admin2020"}}'  
