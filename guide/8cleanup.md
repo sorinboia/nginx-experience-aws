@@ -14,5 +14,9 @@ Finally, delete the `NGINX-EKS` stack in the [CloudFormation console](https://eu
 
 :warning: Please note: it will also delete the Cloud9 instance.
 
-
+  
+  
 ### Feedback
+
+The code in this repo is constantly under improvement. 
+Please contact @sorinboia
