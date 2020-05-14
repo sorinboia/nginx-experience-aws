@@ -157,10 +157,9 @@ Let's look for the reason why our attack requests were blocked.
 
 In the right side of the panel, you can see the full request log and the reason why it was blocked.  
 
-Continue and explore the visualization capabilities of Kibana and log information from Nginx WAF by looking into the next two sections bellow the "Discover" button (Visualize and Dashboard -> Overview).
+10. Continue and explore the visualization capabilities of Kibana and log information from Nginx WAF by looking into the next two sections bellow the "Discover" button (Visualize and Dashboard -> Overview).
 
 ![](images/7env.JPG)
 
-### THE END
-### Hope you have enjoyed the workshop.
+### [Next: Cleanup](8cleanup.md)
 
