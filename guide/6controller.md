@@ -141,6 +141,8 @@ The output will look like this:
 
 Click "Submit".
 
+9. Create the certificate:  
+
 ##### "N" -> "Services" -> "Certs" -> "Create Cert"
 > Name: server-cert   
 > Environment: prod  
