@@ -1,10 +1,15 @@
 ## Security
 
-For our final part of the lab we will implement a per-pod Web Application Firewall. The Nginx Waf will allow to increase application security especially for [OWASP Top 10 attacks](https://owasp.org/www-project-top-ten/).  
-In our scenario since we decided our Nginx Waf to be enabled on a per pod basis we are able to protect all of the traffic coming into the pod regardless of where is it originated from ( external or internal to the Kubernetes cluster).  
-We are able to bring security closer to the application and the development cycle and integrated into CI/CD pipelines. This will allow the almost remove false positives since it becomes a part of the application and is always tested as such.  
+In our final part of the workshop, we will implement a per-pod Web Application Firewall.  
+The Nginx WAF will allow to improve the application security posture, especially against [OWASP Top 10 attacks](https://owasp.org/www-project-top-ten/).  
 
-First we will start by applying the Nginx Waf config which can be found in the "files/7waf/waf-config.yaml".  
+In our scenario, since we decided our Nginx WAF to be enabled on a per-pod basis, we will be able to protect all the traffic coming into the pod regardless of where it is originating from (external or internal to the Kubernetes cluster).  
+
+We'll be able to bring security closer to the application and the development cycle and integrate it into CI/CD pipelines.  
+This will allow to minimize false positives, since the WAF policy becomes a part of the application and is always tested as such.  
+
+1. First we will start by applying the Nginx WAF config, which can be found in the "files/7waf/waf-config.yaml" file.  
+
 <pre>
 Command:
 kubectl apply -f files/7waf/waf-config.yaml
