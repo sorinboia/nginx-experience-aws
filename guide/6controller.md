@@ -237,6 +237,7 @@ Return to "N" -> "Services"-> "APIs" -> "API Definitions" -> "Arcadia API" -> "P
 > Environment: prod  
 > Application: arcadia-api  
 > Gateways: api.arcadia.aws.cloud  
+
 Save  
 
 17. Click on 'Add a route':  
