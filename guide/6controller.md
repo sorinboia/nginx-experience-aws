@@ -354,14 +354,15 @@ curl -k --location --request POST 'https://[EXTERNAL-IP OF THE "microgateway" se
 :warning: Please note: you need to replace the IP address of the `microgateway` service and the API key value you saved earlier.  
 
 <pre>
-export apikey=[REPLACE WITH THE PREVIOUSLY SAVE API KEY]
+export apikey=[REPLACE WITH THE PREVIOUSLY SAVED API KEY]
 curl -k --location --request POST 'https://[EXTERNAL-IP OF THE "microgateway" service]/api/rest/execute_money_transfer.php' --header "apikey: $apikey" --header 'Content-Type: application/json' --data-raw '{"amount":"77","account":"2075894","currency":"EUR","friend":"Alfredo"}'
 </pre>
 
 
+### Summary
 
-
-All of our microgateway api configuration is finished. We have published both external and internal APIs and are able to gather and view statistics for traffic coming from external clients and also internally when a service is contacting anther. We have achieved the bellow architecture. 
+All of our microgateway API configuration is complete.  
+We have published both external and internal APIs and are able to gather and view statistics for traffic coming from external clients and also internally when one service is contacting another. We have achieved the bellow architecture: 
 ![](images/6env.JPG)
 
 #### [Next part](7security.md)
