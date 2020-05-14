@@ -216,27 +216,31 @@ Click the "Pen" icon of the "Arcadia API" and you can see a list of the defined 
 
 We are interested in "main" and "app2" and their DNS names are `arcadia-main` and `arcadia-app2`.
 
-15. Create workloads:
+15. Create the workloads:
 ##### "N" -> "Services" -> "APIs" -> "Workload Groups" -> "Create a Workload Group"
 Create the configuration of each of the workloads:  
 
 > Name: arcadia-app2  
 > Click Save  
 
-Add workload:
+Add a Workload:
 > First input: arcadia-app2  
 > Port: 80  
 
-Repeat the steps above for "arcadia-main". 
+Repeat the steps above for `arcadia-main`. 
    
-16. 
-Return to "N" -> "Services"-> "APIs" -> "API Definitions" -> "Pen" Icon -> "Add a published API"
+16. Add a Published API:  
+
+Return to "N" -> "Services"-> "APIs" -> "API Definitions" -> "Arcadia API" -> "Pen" Icon -> "Add a Published API":
+
 > Published API Name: arcadia-pub-api  
 > Environment: prod  
 > Application: arcadia-api  
-> Gateways: api.arcadia.sorinb.cloud  
-> Save  
-> Add a route  
+> Gateways: api.arcadia.aws.cloud  
+Save  
+
+17. Click on 'Add a route':  
+
 > All URLs that start with /api assign work load "arcadia-app2". 
 > All URLs that start with /trading assign work load "arcadia-main".  
 > After adding each route click Save.
