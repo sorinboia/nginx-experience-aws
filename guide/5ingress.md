@@ -1,6 +1,5 @@
 ## Increase availability, security and application performance with Kubernetes Nginx Ingress - part 1
 
-Now we are getting to the interesting part.  
 Previously we have deployed the application but did not expose the services.  
 
 We need to be able to route the requests to the relevant service.
