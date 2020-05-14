@@ -242,7 +242,7 @@ Save
 
 17. Click on 'Add a route':  
 
-> All URLs that start with /api - assign the "arcadia-app2" workload
+> All URLs that start with /api - assign the "arcadia-app2" workload  
 > All URLs that start with /trading - assign the "arcadia-main" workload
 
 After adding each route click Save.  
