@@ -141,7 +141,7 @@ The output will look like this:
 
 Click "Submit".
 
-9. Create the certificate:  
+9. Create the Certificate:  
 
 ##### "N" -> "Services" -> "Certs" -> "Create Cert"
 > Name: server-cert   
@@ -151,6 +151,7 @@ Click "Submit".
 > Public Cert: Browse to https://raw.githubusercontent.com/sorinboia/nginx-experience-aws/master/certs_for_mtls/ca.pem copy and paste.  
 < Submit
 
+10. Create the Gateway:  
 
 ##### "N" -> "Services" -> "Gateways" -> "Create Gateway"
 > Name: api.arcadia.sorinb.cloud   
@@ -159,6 +160,9 @@ Click "Submit".
 > Hostname: https://<EXTERNAL-IP OF THE "microgateway" SERVICE>  
 > Cert Reference: server-cert  
 > Submit
+
+
+11. Create the App: 
 
 ##### "N" -> "Services" -> "Apps" -> "Create App"
 > Name: arcadia-api   
