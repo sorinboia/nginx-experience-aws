@@ -13,6 +13,6 @@ kubectl delete --all svc --namespace=default
 kubectl delete --all svc --namespace=nginx-ingress
 cd terraform
 terraform destroy
-aws cloudformation delete-stack --stack-name NGINX-EKS
+aws cloudformation delete-stack --stack-name NGINX-EKS --region eu-central-1
 ```
 
