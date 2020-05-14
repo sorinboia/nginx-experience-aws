@@ -302,7 +302,8 @@ EOF
 </pre>
 
 
-Next we are going to test an API call to our published APIs.  
+23. Next, we are going to test an API call to our published APIs.  
+:warning: Please note: you need to replace the IP address of the `microgateway` service.
 
 Run the bellow curl command.
 <pre>
