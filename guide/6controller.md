@@ -23,9 +23,12 @@ Output:
 cd ..
 ```
 
-Https browse to the IP address of the Controller.
-> username: nginx@f5.com  
-> password: Admin2020
+3. Browse (using `HTTPS`) to the IP address of the Controller:
+
+```
+Username (email): nginx@f5.com
+Password: Admin2020
+```
 
 Next step is to get the API key to connect the microgateway so it is managed by the controller.
 One you login the first thing you will see is the API key, save it for later.
