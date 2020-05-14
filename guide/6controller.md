@@ -63,9 +63,9 @@ spec:
           imagePullPolicy: Always
           env:
             - name: API_KEY
-              value: `<REPLACE WITH THE API KEY>`
+              value: \\<REPLACE WITH THE API KEY\\>
             - name: CTRL_HOST
-              value: `<REPLACE WITH CONTROLLER IP ADDRESS>`
+              value: \\<REPLACE WITH CONTROLLER IP ADDRESS\\>
             - name: HOSTNAME
               value: microgateway1            
           ports:
