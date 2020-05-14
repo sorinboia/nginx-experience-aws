@@ -117,9 +117,10 @@ NAME      TYPE           CLUSTER-IP      EXTERNAL-IP                            
 elk-web   LoadBalancer   172.20.179.34   a28bd2d8c94214ae0b512274daa06211-2103709514.eu-central-1.elb.amazonaws.com   5601:32471/TCP,9200:32589/TCP,5044:31876/TCP   16h
 </pre>
 
-Wait a minute or two and verify that ELK is up and running by browsing to: http://[YOUR EXTERNAL IP]:5601 .
+4. Verify that ELK is up and running by browsing to: `http://[ELK-EXTERNAL-IP]:5601/`.
+:warning: Please note that it might take some time for the DNS name to become available.
 
-Next we need to change our deployment configuration so it includes the Nginx Waf.
+5. Next, we need to change our deployment configuration so it includes the Nginx WAF.
 <pre>
 Commands:
 kubectl apply -f files/7waf/arcadia-main.yaml
