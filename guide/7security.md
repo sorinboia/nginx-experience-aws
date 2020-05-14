@@ -144,8 +144,14 @@ Each of the blocked requests will generate a support ID, save it for later.
 
 ![](images/kibana1.JPG)  
 
-You will see all of the request logs,good and bad, sent by Nginx Waf to ELK.
-Lets look for the reason why our bad requests were blocked, add a filter with the support ID you have received as seen bellow.
+  
+  
+Here, you'll see all the request logs, allowed and blocked, sent by the Nginx WAF to ELK.  
+
+Let's look for the reason why our attack requests were blocked.  
+
+
+9. Add a filter with the support ID you have received as seen bellow:
   
 ![](images/kibana2.JPG)  
 
