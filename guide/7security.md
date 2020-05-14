@@ -8,14 +8,14 @@ In our scenario, since we decided our Nginx WAF to be enabled on a per-pod basis
 We'll be able to bring security closer to the application and the development cycle and integrate it into CI/CD pipelines.  
 This will allow to minimize false positives, since the WAF policy becomes a part of the application and is always tested as such.  
 
-1. First we will start by applying the Nginx WAF config, which can be found in the "files/7waf/waf-config.yaml" file.  
+1. First, we will start by applying the Nginx WAF config, which can be found in the "files/7waf/waf-config.yaml" file.  
 
 <pre>
 Command:
 kubectl apply -f files/7waf/waf-config.yaml
 </pre>
 
-The WAF policy is json based and from the example bellow you can observe how all the configuration can be changed based on the application needs:  
+The WAF policy is json based and from the example bellow, you can observe how all the configuration can be changed based on the application needs:  
 <pre>
     {
       "name": "nginx-policy",
@@ -99,13 +99,15 @@ The WAF policy is json based and from the example bellow you can observe how all
     }
 </pre>
 
-First thing we will do is prepare ELK in order for us to be able to visualize and analyze all of the traffic going through the Nginx Waf.
+2. Next, let's use ELK to be able to visualize and analyze the traffic going through the Nginx WAF:  
+
 <pre>
 Command:
 kubectl apply -f files/7waf/elk.yaml
 </pre>
 
-In order to connect to our ELK instance we will need to find the public address of this service.
+3. In order to connect to our ELK pod, we will need to find the public address of this service:  
+
 <pre>
 Command:
 kubectl get svc elk-web
