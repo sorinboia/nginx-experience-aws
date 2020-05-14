@@ -328,16 +328,19 @@ Create.
 
 Save.  
 
-Copy the key that was just create and save it for later.
+Copy the key that was just created and save it for later.
+
+25. Authentication Policy:
 
 ###### "N" -> "Services" -> "APIs" -> "API Definitions" -> "Pen" icon next to "arcadia-pub-api"
+
 > Add a policy  
 > Policy Type: Authentication  
-> Identity Provider: api-protect
+> Identity Provider: api-protect  
 > Credential Location apikey: HTTP request header  
-> Header name: apikey    
-> Save  
-> Publish
+> Header name: apikey  
+
+Save then Publish.
 
 Now in order to check that all is working as expected we will do the following:
 We will run the preview curl command and we will recevie a 401 status code.
