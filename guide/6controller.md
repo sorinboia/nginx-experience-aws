@@ -242,10 +242,14 @@ Save
 
 17. Click on 'Add a route':  
 
-> All URLs that start with /api assign work load "arcadia-app2". 
-> All URLs that start with /trading assign work load "arcadia-main".  
-> After adding each route click Save.
-> When done click "Publish"
+> All URLs that start with /api - assign the "arcadia-app2" workload
+> All URLs that start with /trading - assign the "arcadia-main" workload
+
+After adding each route click Save.  
+
+When done click "Publish".  
+
+
 
 Once the public API has been published we need to take the same procedure and do the same for the internal APIs that are accessing the Arcadia Backend service.  
 
