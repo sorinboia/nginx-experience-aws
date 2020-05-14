@@ -155,8 +155,9 @@ Let's look for the reason why our attack requests were blocked.
   
 ![](images/kibana2.JPG)  
 
-In the right side of the panel you can see the request log and the reason why it was blocked.
-Continue and explore the visualization capabilities of Kibana while receiving the relevant log information from Nginx Waf by looking into the next two buttons bellow the "Discover" button.
+In the right side of the panel, you can see the full request log and the reason why it was blocked.  
+
+Continue and explore the visualization capabilities of Kibana and log information from Nginx WAF by looking into the next two sections bellow the "Discover" button (Visualize and Dashboard -> Overview).
 
 ![](images/7env.JPG)
 
