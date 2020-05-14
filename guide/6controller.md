@@ -121,8 +121,9 @@ microgateway   LoadBalancer   172.20.181.0   ae0aa9bf7704745fbb2a47da2c3a2039-25
 ##### "N" -> "Services" -> "Environments" -> "Create Environment"  
 In all the fields, enter the following value: `prod`.
 
-Click on "View Api Request".  
-All configuration on the Nginx Controller can easlly automated with external orchestration systems, this view can help you in understanding how to generate the configuration API calls.
+Click on "View API Request".  
+All the configuration on the Nginx Controller can be easlly automated with external orchestration systems, this view can help you in understanding how to generate the configuration API calls.  
+
 The output will look like this:
 <pre>
 {
