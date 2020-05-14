@@ -1,5 +1,7 @@
 ### Cleanup
 
+In order to delete the resources created for this workshop, run the commands below.
+:warning: Please note: it will also delete the Cloud9 instance.
 
 ```
 kubectl delete --all pods --namespace=default
@@ -10,4 +12,6 @@ kubectl delete --all svc --namespace=default
 kubectl delete --all svc --namespace=nginx-ingress
 cd terraform
 terraform destroy
+aws cloudformation delete-stack --stack-name NGINX-EKS
 ```
+
