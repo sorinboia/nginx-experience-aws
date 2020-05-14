@@ -1,6 +1,7 @@
 ### Cleanup
 
-In order to delete the resources created for this workshop, run the commands below.
+In order to delete the resources created for this workshop, run the commands below.  
+
 :warning: Please note: it will also delete the Cloud9 instance.
 
 ```
