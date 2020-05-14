@@ -6,7 +6,7 @@ In order to delete the resources created during this workshop, run the commands 
 kubectl delete --all svc --namespace=nginx-ingress
 kubectl delete --all svc --namespace=default
 cd terraform
-terraform destroy --auto-approve
+terraform destroy
 ```
   
   
