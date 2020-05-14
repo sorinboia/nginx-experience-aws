@@ -350,10 +350,10 @@ Now in order to check that all is working as expected, we will do the following:
 curl -k --location --request POST 'https://[EXTERNAL-IP OF THE "microgateway" service]/api/rest/execute_money_transfer.php' --header 'Content-Type: application/json' --data-raw '{"amount":"77","account":"2075894","currency":"EUR","friend":"Alfredo"}'
 </pre>
 
-Now we will run the same command but now we will include the "apikey" header with the api key we previously generated and the transaction will succeed again.
+27. Now we will run the same command but include the "apikey" header with the API key we previously generated and the transaction will succeed again:  
+:warning: Please note: you need to replace the IP address of the `microgateway` service and the API key value you saved earlier.  
 
 <pre>
-Commands:
 export apikey=[REPLACE WITH THE PREVIOUSLY SAVE API KEY]
 curl -k --location --request POST 'https://[EXTERNAL-IP OF THE "microgateway" service]/api/rest/execute_money_transfer.php' --header "apikey: $apikey" --header 'Content-Type: application/json' --data-raw '{"amount":"77","account":"2075894","currency":"EUR","friend":"Alfredo"}'
 </pre>
