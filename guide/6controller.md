@@ -105,7 +105,7 @@ The end goal will be to expose and protect our APIs both internally within the c
 
 You will see the microgateway we just deployed listed. If it is not there wait for about 2 minutes, it might take a little bit of time for the instance to register.
 
-7. Lets get the EXTERNAL-IP of the microgateway service we just published, we will use it later within our config.  
+7. Let's get the EXTERNAL-IP of the microgateway service we just published, we will use it later within our config.  
 
 <pre>
 Command:
@@ -117,9 +117,10 @@ microgateway   LoadBalancer   172.20.181.0   ae0aa9bf7704745fbb2a47da2c3a2039-25
 </pre>
 
 
-Now we will build our configuration:
+8. Now we will build our configuration:
 ##### "N" -> "Services" -> "Environments" -> "Create Environment"  
-Enter in all the field the following value "prod".  
+In all the fields, enter the following value: `prod`.
+
 Click on "View Api Request".  
 All configuration on the Nginx Controller can easlly automated with external orchestration systems, this view can help you in understanding how to generate the configuration API calls.
 The output will look like this:
