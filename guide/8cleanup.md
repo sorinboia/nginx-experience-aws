@@ -20,7 +20,8 @@ Finally, delete the `NGINX-EKS` stack in the [CloudFormation console](https://eu
 
 The code in this repo is constantly under improvement.  
 
-For any feedback or suggestions, either open an Issue on GitHub, or contact:  
+For any feedback or suggestions, either open an [Issue](https://github.com/sorinboia/nginx-experience-aws/issues) on GitHub, or contact:  
 
-Sorin - [@sorinboia](https://github.com/sorinboia) for any NGINX related 
-Artiom - [@artioml](https://github.com/ArtiomL) for any AWS related
+Sorin - [@sorinboia](https://github.com/sorinboia) for any NGINX related topics  
+
+Artiom - [@artioml](https://github.com/ArtiomL) for any AWS related topics  
