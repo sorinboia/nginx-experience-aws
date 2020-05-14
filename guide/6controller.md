@@ -30,8 +30,8 @@ Username (email): nginx@f5.com
 Password: Admin2020
 ```
 
-Next step is to get the API key to connect the microgateway so it is managed by the controller.
-One you login the first thing you will see is the API key, save it for later.
+4. The next step is getting the API key to connect the microgateway so it is managed by the controller.
+Once you login - the first thing you will see is the API key, save it for later.
 
 ![](images/controller_apikey.JPG)
 
