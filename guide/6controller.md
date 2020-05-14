@@ -196,9 +196,9 @@ We have just uploaded the OpenApi spec to the Nginx Controller.
 13. Go to "N" -> "Services" -> "APIs" -> "API Definitions".  
 You can see the "Arcadia API" definition listed.  
 
-14. Click the "Pen" icon of the "Arcadia API" and you can see a list of the defined API endpoints.  
+Click the "Pen" icon of the "Arcadia API" and you can see a list of the defined API endpoints.  
  
-15. Now we are going to check the DNS name of the backend servers we need to point our APIs to:
+14. Now we are going to check the DNS name of the backend servers we need to point our APIs to:
  <pre>
  Command:
  kubectl get svc
@@ -214,19 +214,22 @@ You can see the "Arcadia API" definition listed.
  microgateway      LoadBalancer   172.20.81.110    a2fa7314165114fb9b16ebd92a890078-367878391.eu-central-1.elb.amazonaws.com   80:32293/TCP,443:32428/TCP   12m
  </pre>
 
-We are interested in "main" and "app2" and their DNS names are "arcadia-main" and "arcadia-app2".
+We are interested in "main" and "app2" and their DNS names are `arcadia-main` and `arcadia-app2`.
 
+15. Create workloads:
 ##### "N" -> "Services" -> "APIs" -> "Workload Groups" -> "Create a Workload Group"
-Create the configuration of each of the "Work loads"
+Create the configuration of each of the workloads:  
+
 > Name: arcadia-app2  
 > Click Save  
 
-Add workload
+Add workload:
 > First input: arcadia-app2  
 > Port: 80  
 
 Repeat the steps above for "arcadia-main". 
    
+16. 
 Return to "N" -> "Services"-> "APIs" -> "API Definitions" -> "Pen" Icon -> "Add a published API"
 > Published API Name: arcadia-pub-api  
 > Environment: prod  
