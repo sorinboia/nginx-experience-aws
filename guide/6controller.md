@@ -171,10 +171,11 @@ Click "Submit".
 
   
   
-So far we have created an environment, uploaded the certificate/key that we will use for our HTTPS connection, created a gateway which represents our entry point to the API gateway and last defined a new application object.  
+So far we have created an environment, uploaded the certificate/key that we will use for our HTTPS connection, created a gateway which represents our entry point into the API gateway and last defined a new application object.  
   
   
-Next we are going to publish the application APIs to the world, there are two ways of creating this configuration, the first one is manual similar to the way we performed the configuration until this point and the second one is described bellow.  
+Next we are going to publish the application APIs to the world.   
+There are two ways of creating this configuration, the first one is manual similar to the way we performed the configuration until this point and the second one is described bellow.  
 
 
 The developers of the Arcadia application as part of their development cycle are generating an [OpenApi](https://swagger.io/docs/specification/about/) specification do describe their APIs.  
