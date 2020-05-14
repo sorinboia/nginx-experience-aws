@@ -74,7 +74,9 @@ Browse to the following location and verify that you receive a 404 status code: 
 First we are going to expose all the application services and route traffic based on the HTTP path.
 We will start with a basic configuration.  
 
-4. First create a new file (for example `arcadia-vs.yaml`) using the configuration bellow.  
+4. First create a new file (for example `files/5ingress/arcadia-vs.yaml`) using the configuration bellow.  
+Please use the following folder: `files/5ingress/` for all future K8s config files in this guide.  
+
 :warning: Please note: you need to replace the `host` value with the EXTERNAL-IP of the `nginx-ingress` service.
 
 <pre>
