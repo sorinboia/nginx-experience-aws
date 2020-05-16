@@ -30,13 +30,13 @@ Username (email): nginx@f5.com
 Password: Admin2020
 ```
 
-4. The next step is getting the API key to connect the microgateway so it is managed by the controller.
+4. Get the API key of the Nginx controller to connect the microgateway so it is managed by the controller.
 Once you login - the first thing you will see is the API key, save it for later.
 
 ![](images/controller_apikey.JPG)
 
 
-5. Now let's deploy the microgateway with the following configuration.  
+5. Deploy the microgateway with the following configuration.  
 
 :warning: Please note: you need to replace the IP address of the controller and the API key value you saved in the previous step.
 Create a new file `microgw.yaml`:
@@ -105,7 +105,7 @@ The end goal will be to expose and protect our APIs both internally within the c
 
 You will see the microgateway we just deployed listed. If it is not there wait for about 2 minutes, it might take a little bit of time for the instance to register.
 
-7. Let's get the EXTERNAL-IP of the microgateway service we just published, we will use it later within our config.  
+7. Get the EXTERNAL-IP of the microgateway service we just published, we will use it later within our config.  
 
 <pre>
 Command:
@@ -117,7 +117,7 @@ microgateway   LoadBalancer   172.20.181.0   ae0aa9bf7704745fbb2a47da2c3a2039-25
 </pre>
 
 
-8. Now we will build our configuration:
+8. Build the configuration:
 ##### "N" -> "Services" -> "Environments" -> "Create Environment"  
 In all the fields, enter the following value: `prod`.
 
@@ -198,7 +198,7 @@ You can see the "Arcadia API" definition listed.
 
 Click the "Pen" icon of the "Arcadia API" and you can see a list of the defined API endpoints.  
  
-14. Now we are going to check the DNS name of the backend servers we need to point our APIs to:
+14. Check the DNS name of the backend servers we need to point our APIs to:
  <pre>
  Command:
  kubectl get svc
@@ -282,7 +282,7 @@ Once the public API has been published - we need to take similar steps for the i
 > Workload Group Name: arcadia-backend    
 > URI: http://arcadia-backend  
 
-22. Now we just need to tell kubernetes to point to the microgateway instead of directly to the pods.
+22. Instruct kubernetes to point to the microgateway instead of directly to the pods.
 <pre>
 cat << EOF | kubectl apply -f -
 apiVersion: v1
@@ -302,7 +302,7 @@ EOF
 </pre>
 
 
-23. Next, we are going to test an API call to our published APIs.  
+23. Generate an API call to our published APIs.  
 :warning: Please note: you need to replace the IP address of the `microgateway` service.
 
 Run the bellow curl command.
@@ -342,9 +342,9 @@ Copy the key that was just created and save it for later.
 
 Save then Publish.
 
-Now in order to check that all is working as expected, we will do the following:
+In order to check that all is working as expected, we will do the following:
 
-26. Run the previous curl command. You should recevie a 401 status code:
+26. Run the previous curl command. You should receive a 401 status code:
 
 <pre>
 curl -k --location --request POST 'https://[EXTERNAL-IP OF THE "microgateway" service]/api/rest/execute_money_transfer.php' --header 'Content-Type: application/json' --data-raw '{"amount":"77","account":"2075894","currency":"EUR","friend":"Alfredo"}'

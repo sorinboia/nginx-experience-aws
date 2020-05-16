@@ -1,13 +1,13 @@
 ## Deploy your application with NGINX Unit Application Server
 
-Our next step will be to deploy our application in the Kubernetes environment.  
+Deploy our application in the Kubernetes environment.  
 As stated before these are the 4 microservices which we will deploy.
-- Main - provides access to the web GUI of the application for use by browsers
-- Backend - is a supporting microservice and provides support for the customer facing services only
-- App2 - provides money transfer API based functionalities for both the Web app and third party consumer applications
-- App3 - provides referral API based functionalities for both the Web app and third party consumer applications
+- **Main** - provides access to the web GUI of the application for use by browsers
+- **Backend** - is a supporting microservice and provides support for the customer facing services only
+- **App2** - provides money transfer API based functionalities for both the Web app and third party consumer applications
+- **App3** - provides referral API based functionalities for both the Web app and third party consumer applications
 
-1. Let's deploy the app
+1. Deploy the app
 <pre>
 Command:
 kubectl apply -f files/5ingress/1arcadia.yaml
@@ -23,7 +23,7 @@ service/arcadia-app2 created
 service/arcadia-app3 created  
 </pre>
 
-2. Let's check that all is deployed and working as expected:  
+2. Check that all is deployed and working as expected:  
 <pre>
 Command:
 kubectl get pods
@@ -49,7 +49,7 @@ backend        ClusterIP      172.20.84.9       none                            
 kubernetes     ClusterIP      172.20.0.1        none                                                                       443/TCP        108m    none   
 </pre>
 
-The application is not accessible yet. We will deploy the NGINX Ingress in the next section.  
+**The application is not accessible yet. We will deploy the NGINX Ingress in the next section.**  
 
 All of our pods are created based on the Nginx Unit application server.
 NGINX Unit is a dynamic application server, capable of running beside NGINX Plus and NGINX Open Source or standalone. Unit supports a RESTful JSON API, deploys configuration changes without service disruptions, and runs apps built with multiple languages and frameworks. Designed from scratch around the needs of your distributed applications, it lays the foundation for your service mesh.

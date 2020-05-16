@@ -1,6 +1,6 @@
 ## Deploy NGINX infrastructure using Terraform
 
-First we will start by using Terraform to deploy the initial infrastructure which includes the Amazon Elastic Kubernetes Service and the EC2 instance for the Nginx Controller.
+We will start by using Terraform to deploy the initial infrastructure which includes the Amazon Elastic Kubernetes Service and the EC2 instance for the Nginx Controller.
 
 1. Go to the "terraform" directory where we can find the terraform plan.
 
@@ -30,7 +30,7 @@ Amazon EKS provides a scalable and highly-available control plane that runs acro
 ### Managed worker nodes
 Amazon EKS lets you create, update, or terminate worker nodes for your cluster with a single command. Managed node groups run nodes using the latest EKS-optimized AMIs in your AWS account while updates and terminations gracefully drain nodes to ensure your applications stay available.
 
-Once Terraform is done, we need to verify the deployment is working as expected and we are able to control the Kubernetes environment.
+Wair for Terraform is to finish and verify the deployment is working as expected and we are able to control the Kubernetes environment.
 
 4. We need to save the remote access config for the Kubernetes cluster locally:  
 <pre>
@@ -38,7 +38,7 @@ mkdir ~/.kube/
 terraform output > ~/.kube/config
 </pre>
 
-5. Let's do a quick check and see that our cluster is up an running.  
+5. Check and see that our cluster is up an running.  
 Below we should see our two K8s worker nodes:
 <pre>
 Command:

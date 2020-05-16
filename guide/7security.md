@@ -99,7 +99,7 @@ The WAF policy is json based and from the example bellow, you can observe how al
     }
 </pre>
 
-2. Next, let's use ELK to be able to visualize and analyze the traffic going through the Nginx WAF:  
+2. Deploy ELK in order to be able to visualize and analyze the traffic going through the Nginx WAF:  
 
 <pre>
 Command:
@@ -130,7 +130,7 @@ kubectl apply -f files/7waf/arcadia-app3.yaml
 kubectl apply -f files/7waf/arcadia-backend.yaml
 </pre>
 
-Now, all of our services are protected and monitored.
+All of our services are protected and monitored.
 
 6. Browse again to the Arcadia web app and verify that it is still working.  
 

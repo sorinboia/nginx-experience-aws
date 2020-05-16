@@ -10,7 +10,7 @@ Nginx Kubernetes Ingress to save the day! :)
 ##### Let's start with the Nginx deployment.
 We are going to use the Nginx installation manifests based on the [Nginx Ingress Controller installation guide](https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/).
 For simplicity - we have already prepared the installation in a single yaml file.  
-1. Simply run the command bellow:  
+1. Run the command bellow:  
 
 <pre>
 Command:
@@ -27,7 +27,7 @@ deployment.apps/nginx-ingress created
 service/nginx-ingress created
 </pre>
   
-2. Next we need to run the following in order to expose the Nginx Ingress Dashboard (copy and paste in the command line the bellow).
+2. Expose the Nginx Ingress Dashboard (copy and paste in the command line the bellow).
 <pre>
 cat << EOF | kubectl apply -f -
 apiVersion: v1
@@ -49,7 +49,7 @@ spec:
 EOF
 </pre>
 
-3. Let's check what we did so far is actually working. Run the following command:
+3. Check what we did so far is actually working:
 
 <pre>
 Command:
@@ -71,10 +71,10 @@ Browse to the following location and verify that you receive a 404 status code: 
 
 
 ##### Now we can get to the interesting part
-First we are going to expose all the application services and route traffic based on the HTTP path.
+Expose all the application services and route traffic based on the HTTP path.
 We will start with a basic configuration.  
 
-4. First create a new file (for example `files/5ingress/arcadia-vs.yaml`) using the configuration bellow.  
+4. Create a new file (for example `files/5ingress/arcadia-vs.yaml`) using the configuration bellow.  
   
 :warning: Please use the following folder: `files/5ingress/` for all future K8s config files in this guide.  
 
@@ -106,7 +106,7 @@ spec:
 
 Note how the various HTTP paths (`/, /api/, /app3/`) are routed by Ingress to the relevant K8s services.  
 
-5. Now apply the configuration.
+5. Apply the configuration.
 <details>
   <summary>Click here for detailed instructions.</summary>
  
@@ -133,9 +133,9 @@ At the moment we still have two key features missing:
 - We are not actively monitoring the health of the pods through the data path
 
 
-8. First take a look at the `files/5ingress/2arcadia.yaml` file. It increases the number of pods for our services to two - and also defines how the http health checks will looks like.  
+8. Take a look at the `files/5ingress/2arcadia.yaml` file. It increases the number of pods for our services to two - and also defines how the http health checks will looks like.  
 
-9. Let's apply this new configuration.
+9. Apply this new configuration.
 <details>
   <summary>Click here for detailed instructions.</summary>
 <pre>
@@ -144,7 +144,7 @@ kubectl apply -f files/5ingress/2arcadia.yaml
 </pre>
 </details>
 
-10. If you look at the Nginx dashboard you can see that right now that two HTTP upstreams have 2 members but no health checks are being done.  
+10.Look at the Nginx dashboard, you can see that right now that two HTTP upstreams have 2 members but no health checks are being done.  
 In our next step we will finish this part of the configuration, we will implement the following:  
 - Enable health checks
 - Enable https for the application and redirect http requests to https
@@ -203,10 +203,10 @@ kubectl apply -f files/5ingress/ingress-arcadia.yaml
 </pre>
 </details>
 
-12. Now when you try to browse to the Arcadia website with http you will be automatically redirected to https.  
-Also, if you look at the Nginx dashboard you can observe that Nginx has started monitoring the pods.
+12. Browse to the Arcadia website with http and you will be automatically redirected to https.  
+Look at the Nginx dashboard and observe that Nginx has started monitoring the pods.
 
-Our next step in the application journey will be to speed up application performance and enable caching. 
+Speed up application performance and enable caching.
 
 13. Create a new file `nginx-config.yaml` that reflects the bellow configuration and apply it. We are telling Nginx to create a caching entity that will be used by our Ingress.  
 
@@ -234,7 +234,7 @@ kubectl apply -f files/5ingress/nginx-config.yaml
 </details>
 
 
-Next we will tell our Nginx Ingress to start using it and start caching.  
+Configure the Nginx Ingress to start using it and start caching.  
 
 14. Create a new file `nginx-ingress-update.yaml` with the configuration below and apply it.  
 :warning: Please note: you need to replace the `host` value with the EXTERNAL-IP of the `nginx-ingress` service.  
