@@ -35,6 +35,6 @@ variable "cluster-name" {
 }
 
 variable "key_name" {
-  default = "sorin_key"
+  default = "ee-default-keypair"
   type    = string
 }
