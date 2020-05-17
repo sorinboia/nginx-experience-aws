@@ -30,7 +30,7 @@ Amazon EKS provides a scalable and highly-available control plane that runs acro
 ### Managed worker nodes
 Amazon EKS lets you create, update, or terminate worker nodes for your cluster with a single command. Managed node groups run nodes using the latest EKS-optimized AMIs in your AWS account while updates and terminations gracefully drain nodes to ensure your applications stay available.
 
-Wair for Terraform is to finish and verify the deployment is working as expected and we are able to control the Kubernetes environment.
+Wait for Terraform to finish and verify the deployment is working as expected and we are able to control the Kubernetes environment.
 
 4. We need to save the remote access config for the Kubernetes cluster locally:  
 <pre>
