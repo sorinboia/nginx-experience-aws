@@ -36,7 +36,7 @@ This workshop creates an AWS account and a Cloud9 environment. You will need the
 
 &nbsp;&nbsp;
 
-![Event Engine AWS Console](images/event-engine-aws-console.png)
+![Event Engine AWS Console](images/ee-aws-console.png)
 
 &nbsp;&nbsp;
 
