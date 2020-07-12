@@ -1,5 +1,5 @@
 resource "aws_iam_role" "demo-master" {
-  name = "terraform-eks-demo-cluster"
+  name = "nginx-eks-cluster-${random_id.random-string.dec}"
 
   assume_role_policy = <<POLICY
 {
@@ -29,7 +29,7 @@ resource "aws_iam_role_policy_attachment" "demo-cluster-AmazonEKSServicePolicy" 
 
 
 resource "aws_eks_cluster" "demo" {
-  name            = var.cluster-name
+  name            = "nginx-eks-${random_id.random-string.dec}"
   role_arn        = aws_iam_role.demo-master.arn
 
   vpc_config {

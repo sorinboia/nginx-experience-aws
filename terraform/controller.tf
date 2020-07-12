@@ -1,5 +1,6 @@
+
 resource "aws_iam_role" "web_iam_role" {
-  name               = "web_iam_role"
+  name               = "web_iam_role-${random_id.random-string.dec}"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -15,16 +16,15 @@ resource "aws_iam_role" "web_iam_role" {
   ]
 }
 EOF
-
 }
 
 resource "aws_iam_instance_profile" "iam_nginx_profile" {
-  name = "web_instance_profile"
-  role = "web_iam_role"
+  name = "web_instance_profile-${random_id.random-string.dec}"
+  role = aws_iam_role.web_iam_role.id
 }
 
 resource "aws_iam_role_policy" "web_iam_role_policy" {
-  name   = "web_iam_role_policy"
+  name   = "web_iam_role_policy-${random_id.random-string.dec}"
   role   = aws_iam_role.web_iam_role.id
   policy = <<EOF
 {

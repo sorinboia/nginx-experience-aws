@@ -87,67 +87,67 @@ Click `Create stack`.
 ## Cloud9
 
 10. Open the [Cloud9 console](https://eu-central-1.console.aws.amazon.com/cloud9/home), and click on `Open IDE`.
-This will open a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. It includes a code editor, debugger, and a terminal. We will be using it for the rest of the workshop.
-
-> :warning: Ad blockers, javascript disablers, and tracking blockers should be disabled for the cloud9 domain, or connecting to the workspace might be impacted. Cloud9 requires third-party-cookies. You can whitelist the specific domains.
-
-&nbsp;&nbsp;
-
-11. Disable temporary credentials:
-- In the Cloud9 IDE click the gear icon (in top right corner), or click to open a new tab and choose "Open Preferences"
-- Select **AWS SETTINGS**
-- Turn off **AWS managed temporary credentials**
-- Close the Preferences tab
-
-&nbsp;&nbsp;
-
-![c9disableiam](images/c9disableiam.png)
-
-&nbsp;&nbsp;
-
-12. To ensure temporary credentials aren't already in place we will also remove any existing credentials file:
-  
-```sh
-rm -vf ${HOME}/.aws/credentials
-```
-
-&nbsp;&nbsp;
-
-13. Validate the IAM role:
-  
-Use the [GetCallerIdentity](https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html) CLI command to validate that the Cloud9 IDE is using the correct IAM role.
-
-```
-aws sts get-caller-identity --query Arn | grep eksworkshop-admin -q && echo "IAM role valid" || echo "IAM role NOT valid"
-```
-
-If the IAM role is not valid, <span style="color: red;">**DO NOT PROCEED**</span>. Go back and confirm the steps on this page.
-
-&nbsp;&nbsp;
-
-14. Run the following command to install all the software tools required to run the workshop:
-
-```
-labs/eks/install.sh
-```
-
-The output of the script should show:
-```
-kubectl in path
-jq in path
-envsubst in path
-aws in path
-aws-iam-authenticator in path
-terraform in path
-```
-
-&nbsp;&nbsp;
-
-15. Clone the Workshop Repo:
-```
-git clone https://github.com/sorinboia/nginx-experience-aws
-cd nginx-experience-aws/
-```
+   This will open a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. It includes a code editor, debugger, and a terminal. We will be using it for the rest of the workshop.
+   
+   > :warning: Ad blockers, javascript disablers, and tracking blockers should be disabled for the cloud9 domain, or connecting to the workspace might be impacted. Cloud9 requires third-party-cookies. You can whitelist the specific domains.
+   
+   &nbsp;&nbsp;
+   
+   11. Disable temporary credentials:
+   - In the Cloud9 IDE click the gear icon (in top right corner), or click to open a new tab and choose "Open Preferences"
+   - Select **AWS SETTINGS**
+   - Turn off **AWS managed temporary credentials**
+   - Close the Preferences tab
+   
+   &nbsp;&nbsp;
+   
+   ![c9disableiam](images/c9disableiam.png)
+   
+   &nbsp;&nbsp;
+   
+   12. To ensure temporary credentials aren't already in place we will also remove any existing credentials file:
+     
+   ```sh
+   rm -vf ${HOME}/.aws/credentials
+   ```
+   
+   &nbsp;&nbsp;
+   
+   13. Validate the IAM role:
+     
+   Use the [GetCallerIdentity](https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html) CLI command to validate that the Cloud9 IDE is using the correct IAM role.
+   
+   ```
+   aws sts get-caller-identity --query Arn | grep eksworkshop-admin -q && echo "IAM role valid" || echo "IAM role NOT valid"
+   ```
+   
+   If the IAM role is not valid, <span style="color: red;">**DO NOT PROCEED**</span>. Go back and confirm the steps on this page.
+   
+   &nbsp;&nbsp;
+   
+   14. Run the following command to install all the software tools required to run the workshop:
+   
+   ```
+   labs/eks/install.sh
+   ```
+   
+   The output of the script should show:
+   ```
+   kubectl in path
+   jq in path
+   envsubst in path
+   aws in path
+   aws-iam-authenticator in path
+   terraform in path
+   ```
+   
+   &nbsp;&nbsp;
+   
+   15. Clone the Workshop Repo:
+   ```
+   git clone https://github.com/sorinboia/nginx-experience-aws
+   cd nginx-experience-aws/
+   ```
 
 &nbsp;&nbsp;
 

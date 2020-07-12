@@ -1,5 +1,5 @@
 resource "aws_iam_role" "demo-node" {
-  name = "terraform-eks-demo-node"
+  name = "nginx-eks-demo-node-${random_id.random-string.dec}"
 
   assume_role_policy = <<POLICY
 {
@@ -34,7 +34,7 @@ resource "aws_iam_role_policy_attachment" "demo-node-AmazonEC2ContainerRegistryR
 
 resource "aws_eks_node_group" "demo" {
   cluster_name    = aws_eks_cluster.demo.name
-  node_group_name = "demo"
+  node_group_name = "eks-${random_id.random-string.dec}"
   node_role_arn   = aws_iam_role.demo-node.arn
   subnet_ids      = [aws_subnet.public-subnet.id,aws_subnet.private-subnet.id]
   instance_types = ["t3.xlarge"]
@@ -52,7 +52,7 @@ resource "aws_eks_node_group" "demo" {
   }
 
   tags = {
-    Name = "sorin k8s_nodes"
+    Name = "nginx k8s_nodes"
   }
 
   depends_on = [
@@ -61,3 +61,4 @@ resource "aws_eks_node_group" "demo" {
     aws_iam_role_policy_attachment.demo-node-AmazonEC2ContainerRegistryReadOnly,
   ]
 }
+

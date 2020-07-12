@@ -1,3 +1,7 @@
+resource "random_id" "random-string" {
+  byte_length = 4
+}
+
 variable "user_id" {
   default = "sorin"
 }
@@ -35,6 +39,6 @@ variable "cluster-name" {
 }
 
 variable "key_name" {
-  default = "ee-default-keypair"
+  default = "sorin_key"
   type    = string
 }
