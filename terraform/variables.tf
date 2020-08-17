@@ -34,7 +34,7 @@ variable "private_subnet_cidr" {
 }
 
 variable "cluster-name" {
-  default = "terraform-eks-demo"
+  default = "terraform-eks"
   type    = string
 }
 

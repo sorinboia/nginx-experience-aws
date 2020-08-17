@@ -38,7 +38,7 @@ users:
       args:
         - "token"
         - "-i"
-        - "${var.cluster-name}"
+        - "${var.cluster-name}-${random_id.random-string.dec}"
 KUBECONFIG
 }
 
@@ -49,4 +49,3 @@ output "config_map_aws_auth" {
 output "kubeconfig" {
   value = local.kubeconfig
 }
-

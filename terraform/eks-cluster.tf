@@ -29,7 +29,7 @@ resource "aws_iam_role_policy_attachment" "demo-cluster-AmazonEKSServicePolicy" 
 
 
 resource "aws_eks_cluster" "demo" {
-  name            = "nginx-eks-${random_id.random-string.dec}"
+  name            = "${var.cluster-name}-${random_id.random-string.dec}"
   role_arn        = aws_iam_role.demo-master.arn
 
   vpc_config {

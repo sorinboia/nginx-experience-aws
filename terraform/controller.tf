@@ -57,7 +57,7 @@ EOF
 
 resource "aws_instance" "controller" {
   ami                  = "ami-09356619876445425"
-  iam_instance_profile = aws_iam_instance_profile.iam_nginx_profile.id
+  #iam_instance_profile = aws_iam_instance_profile.iam_nginx_profile.id
   instance_type        = "t2.2xlarge"
   root_block_device {
     volume_size = "80"
@@ -75,7 +75,7 @@ resource "aws_instance" "controller" {
       swapoff -a
       ufw disable
       apt-get install awscli jq -y
-      aws s3 cp s3://sorinnginx/controller-installer-3.4.0.tar.gz /home/ubuntu/controller.tar.gz
+      wget https://sorinnginx.s3.eu-central-1.amazonaws.com/controller-installer-3.7.0.tar.gz -O /home/ubuntu/controller.tar.gz
       tar zxvf /home/ubuntu/controller.tar.gz -C /home/ubuntu/
       host_ip=$(curl -s ifconfig.me)
       echo $HOME > oldh.txt

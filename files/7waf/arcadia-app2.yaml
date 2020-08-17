@@ -18,7 +18,7 @@ spec:
           image: sorinboia/arcadia-app2:unit
           ports:
           - containerPort: 8080
-        - image: sorinboia/app_protect:beta
+        - image: sorinboia/app_protect:v1
           imagePullPolicy: Always
           name: nginx-ingress-protect
           ports:
