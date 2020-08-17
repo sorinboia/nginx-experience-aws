@@ -74,7 +74,7 @@ resource "aws_instance" "controller" {
       apt-get update
       swapoff -a
       ufw disable
-      apt-get install awscli jq -y
+      apt-get install jq socat conntrack -y
       wget https://sorinnginx.s3.eu-central-1.amazonaws.com/controller-installer-3.7.0.tar.gz -O /home/ubuntu/controller.tar.gz
       tar zxvf /home/ubuntu/controller.tar.gz -C /home/ubuntu/
       host_ip=$(curl -s ifconfig.me)
