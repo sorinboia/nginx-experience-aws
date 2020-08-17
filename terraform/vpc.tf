@@ -24,7 +24,7 @@ resource "aws_subnet" "public-subnet" {
 
   tags = {
     Name = "Web Public Subnet"
-    "kubernetes.io/cluster/terraform-eks-demo" = "shared"
+    "kubernetes.io/role/elb" = "1"
   }
 }
 
@@ -37,7 +37,7 @@ resource "aws_subnet" "private-subnet" {
 
   tags = {
     Name = "Web Private Subnet"
-    "kubernetes.io/cluster/terraform-eks-demo" = "shared"
+    "kubernetes.io/role/internal-elb" = "1"
   }
 }
 
