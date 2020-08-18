@@ -82,9 +82,6 @@ resource "aws_route_table_association" "web-public-rt" {
 resource "aws_route_table_association" "web-private-rt" {
   subnet_id      = aws_subnet.private-subnet.id
   route_table_id = aws_route_table.web-public-rt.id
-  tags = {
-    Nginx = "nginx experience ${random_id.random-string.dec}"
-  }
 }
 
 resource "aws_security_group" "sgweb" {

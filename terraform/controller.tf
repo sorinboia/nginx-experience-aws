@@ -24,17 +24,11 @@ EOF
 resource "aws_iam_instance_profile" "iam_nginx_profile" {
   name = "web_instance_profile-${random_id.random-string.dec}"
   role = aws_iam_role.web_iam_role.id
-  tags = {
-    Nginx = "nginx experience ${random_id.random-string.dec}"
-  }
 }
 
 resource "aws_iam_role_policy" "web_iam_role_policy" {
   name   = "web_iam_role_policy-${random_id.random-string.dec}"
   role   = aws_iam_role.web_iam_role.id
-  tags = {
-    Nginx = "nginx experience ${random_id.random-string.dec}"
-  }
   policy = <<EOF
 {
   "Version": "2012-10-17",
