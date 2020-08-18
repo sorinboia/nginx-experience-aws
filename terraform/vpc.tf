@@ -2,7 +2,8 @@ resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
 
   tags = {
-    Name = "sorin_vpc nginx"
+    Name = "vpc nginx experience"
+    Nginx = "nginx experience ${random_id.random-string.dec}"
   }
 }
 
@@ -13,6 +14,7 @@ resource "aws_subnet" "management-subnet" {
   map_public_ip_on_launch = true
   tags = {
     Name = "Management Subnet"
+    Nginx = "nginx experience ${random_id.random-string.dec}"
   }
 }
 
@@ -24,6 +26,7 @@ resource "aws_subnet" "public-subnet" {
 
   tags = {
     Name = "Web Public Subnet"
+    Nginx = "nginx experience ${random_id.random-string.dec}"
     "kubernetes.io/role/elb" = "1"
   }
 }
@@ -37,6 +40,7 @@ resource "aws_subnet" "private-subnet" {
 
   tags = {
     Name = "Web Private Subnet"
+    Nginx = "nginx experience ${random_id.random-string.dec}"
     "kubernetes.io/role/internal-elb" = "1"
   }
 }
@@ -45,6 +49,7 @@ resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.main.id
 
   tags = {
+    Nginx = "nginx experience ${random_id.random-string.dec}"
     Name = "VPC IGW"
   }
 }
@@ -54,11 +59,13 @@ resource "aws_route_table" "web-public-rt" {
 
   route {
     cidr_block = "0.0.0.0/0"
+    Nginx = "nginx experience"
     gateway_id = aws_internet_gateway.gw.id
   }
 
   tags = {
     Name = "Public Subnet RT"
+    Nginx = "nginx experience ${random_id.random-string.dec}"
   }
 }
 
@@ -66,12 +73,18 @@ resource "aws_route_table" "web-public-rt" {
 resource "aws_route_table_association" "web-public-rt" {
   subnet_id      = aws_subnet.public-subnet.id
   route_table_id = aws_route_table.web-public-rt.id
+  tags = {
+    Nginx = "nginx experience ${random_id.random-string.dec}"
+  }
 
 }
 
 resource "aws_route_table_association" "web-private-rt" {
   subnet_id      = aws_subnet.private-subnet.id
   route_table_id = aws_route_table.web-public-rt.id
+  tags = {
+    Nginx = "nginx experience ${random_id.random-string.dec}"
+  }
 }
 
 resource "aws_security_group" "sgweb" {
@@ -96,5 +109,6 @@ resource "aws_security_group" "sgweb" {
 
   tags = {
     Name = "Sorin Security Group"
+    Nginx = "nginx experience ${random_id.random-string.dec}"
   }
 }
