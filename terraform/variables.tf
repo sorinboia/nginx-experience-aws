@@ -38,7 +38,13 @@ variable "cluster-name" {
   type    = string
 }
 
+variable "key_name" {
+  default = "NGINX"
+  type    = string
+}
+
 variable "key_path" {
   default = "~/eks.key.pub"
   type    = string
 }
+
