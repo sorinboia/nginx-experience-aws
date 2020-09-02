@@ -28,6 +28,7 @@ resource "aws_subnet" "public-subnet" {
     Name = "Web Public Subnet"
     Nginx = "nginx experience ${random_id.random-string.dec}"
     "kubernetes.io/role/elb" = "1"
+    "kubernetes.io/cluster/${var.cluster-name}-${random_id.random-string.dec}" = "shared"
   }
 }
 
@@ -42,6 +43,7 @@ resource "aws_subnet" "private-subnet" {
     Name = "Web Private Subnet"
     Nginx = "nginx experience ${random_id.random-string.dec}"
     "kubernetes.io/role/internal-elb" = "1"
+    "kubernetes.io/cluster/${var.cluster-name}-${random_id.random-string.dec}" = "shared"
   }
 }
 
