@@ -39,6 +39,6 @@ variable "cluster-name" {
 }
 
 variable "key_name" {
-  default = "sorin_key"
+  default = "key-pair-name"
   type    = string
 }
