@@ -39,7 +39,7 @@ resource "aws_eks_node_group" "demo" {
   instance_types = ["t3.xlarge"]
 
   remote_access {
-    #ec2_ssh_key = var.key_name
+    ec2_ssh_key = aws_key_pair.main.id
     source_security_group_ids = [aws_security_group.sgweb.id]
   }
 
