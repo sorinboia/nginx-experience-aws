@@ -68,7 +68,6 @@ resource "aws_instance" "controller" {
   associate_public_ip_address = true
   availability_zone           = var.aws_az
   subnet_id                   = aws_subnet.public-subnet.id
-  security_groups             = [aws_security_group.sgweb.id]
   vpc_security_group_ids      = [aws_security_group.sgweb.id]
   key_name                    = aws_key_pair.main.id
 
